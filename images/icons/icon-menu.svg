@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="55px" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu" stroke="#FFFFFF" stroke-width="2">
+            <path d="M17,20.5 L38,20.5" id="line-bottom" stroke-linecap="square"></path>
+            <path d="M17,36.5 L38,36.5" id="line-center" stroke-linecap="square"></path>
+            <path d="M13,28.5 L42.0903236,28.5" id="line-top" stroke-linecap="square"></path>
+            <rect id="border" x="1" y="1" width="53" height="53"></rect>
+        </g>
+    </g>
+</svg>

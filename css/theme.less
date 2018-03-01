@@ -1,0 +1,74 @@
+@font-proxima-thin      : 'Proxima Nova Thin', sans-serif;
+@font-proxima-thinit    : 'Proxima Nova Thin Italic', sans-serif;
+@font-proxima-light     : 'Proxima Nova Light', sans-serif;
+@font-proxima-lightit   : 'Proxima Nova Light Italic', sans-serif;
+@font-proxima-regular   : 'Proxima Nova Regular', sans-serif;
+@font-proxima-regularit : 'Proxima Nova Italic', sans-serif;
+@font-proxima-semibold  : 'Proxima Nova Semibold', sans-serif;
+@font-proxima-semiboldit: 'Proxima Nova Semibold Italic', sans-serif;
+@font-proxima-bold      : 'Proxima Nova Bold', sans-serif;
+@font-proxima-boldit    : 'Proxima Nova Bold Italic', sans-serif;
+@font-proxima-extrabld  : 'Proxima Nova Extra Bold', sans-serif;
+@font-proxima-extrabldit: 'Proxima Nova Extra Bold Italic', sans-serif;
+@font-proxima-black     : 'Proxima Nova Black', sans-serif;
+@font-proxima-blackit   : 'Proxima Nova Black Italic', sans-serif;
+
+@yellow: #fdb116;
+@green: #418215;
+@white: #fff;
+@dark: #000;
+@red: #f9593a;
+
+.btn {
+    font: 13px @font-proxima-semibold;
+    color: @white;
+    letter-spacing: 2px;
+    padding: 15px 45px;
+    text-transform: uppercase;
+    border-radius: 25px;
+
+    &-sm {
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: 11px 45px;
+        text-transform: none;
+    }
+
+    &-light {
+        color: @dark;
+        background: @white;
+
+        &:hover, &:active {
+            color: @dark !important;
+            background: @white !important
+        }
+    }
+
+    &-warning {
+        background: @yellow;
+
+        &:hover, &:active {
+            color: @white !important;
+            background: @yellow !important
+        }
+    }
+}
+
+.form {
+    &-group {
+        label {
+            font: 16px @font-proxima-semibold;
+            color: @white
+        }
+    }
+
+    &-control, &-control:focus {
+        font-size: 14px;
+        border-radius: 18px;
+        border-width: 2px;
+        padding: 8px 15px;
+        color: @dark;
+        border-color: transparent;
+        box-shadow: none
+    }
+}

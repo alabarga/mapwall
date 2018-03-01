@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="24px" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cart" fill="#000000" fill-rule="nonzero">
+            <circle id="Oval" cx="7" cy="21" r="3"></circle>
+            <circle id="Oval" cx="21" cy="21" r="3"></circle>
+            <path d="M27.895,0.554 C27.65,0.06 27.049,-0.142 26.555,0.105 L22.556,2.105 C22.213,2.274 22.001,2.62 22.001,3.001 L22.001,4.001 L2.387,4.001 L1.948,2.684 C1.773,2.159 1.207,1.877 0.682,2.052 C0.159,2.227 -0.123,2.793 0.052,3.317 L0.05,3.317 L4.051,15.317 C4.187,15.727 4.568,16 5,16 L23.002,16 C23.268,16 23.519,15.897 23.708,15.708 C23.897,15.519 24.001,15.268 24.001,15.002 L24.001,3.619 L27.448,1.893 C27.94,1.648 28.142,1.046 27.895,0.554 Z M5.719,14 L3.053,6 L22,6 L22,14 L5.719,14 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,45 @@
+.btn {
+  font: 13px 'Proxima Nova Semibold', sans-serif;
+  color: #fff;
+  letter-spacing: 2px;
+  padding: 15px 45px;
+  text-transform: uppercase;
+  border-radius: 25px;
+}
+.btn-sm {
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 11px 45px;
+  text-transform: none;
+}
+.btn-light {
+  color: #000;
+  background: #fff;
+}
+.btn-light:hover,
+.btn-light:active {
+  color: #000 !important;
+  background: #fff !important;
+}
+.btn-warning {
+  background: #fdb116;
+}
+.btn-warning:hover,
+.btn-warning:active {
+  color: #fff !important;
+  background: #fdb116 !important;
+}
+.form-group label {
+  font: 16px 'Proxima Nova Semibold', sans-serif;
+  color: #fff;
+}
+.form-control,
+.form-control:focus {
+  font-size: 14px;
+  border-radius: 18px;
+  border-width: 2px;
+  padding: 8px 15px;
+  color: #000;
+  border-color: transparent;
+  box-shadow: none;
+}
