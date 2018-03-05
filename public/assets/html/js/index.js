@@ -59,7 +59,7 @@
     });
 
 
-    // Demo Test
+   /* // Demo Test
     const map = GeoMap( '#map' );
 
     $( '#styles [name = type]' ).on('change', function () {
@@ -75,7 +75,7 @@
 			map.mapTypes.set(value, object);
 			map.setMapTypeId( value );
 		})
-    });
+    });*/
 
     
     // Event Window

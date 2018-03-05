@@ -1,0 +1,7 @@
+main section .map-container {
+    opacity: 1 !important;
+}
+
+main section .map-container .caption {
+    z-index: 9999;
+}
