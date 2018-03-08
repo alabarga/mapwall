@@ -20,16 +20,17 @@ $(document).ready(function(){
     });
 
     /*===================== MAP INIT =========================*/
-    mapInit('mono');
     
-    function mapInit(style){
-        const mapMinZoom = 3;
-        const mapMaxZoom = 20;
+    const mapMinZoom = 1;
+    const mapMaxZoom = 20;
 
-        var map = L.map('map', {
-            maxZoom: mapMaxZoom,
-            minZoom: mapMinZoom
-        });
+    var map = L.map('map', {
+        maxZoom: mapMaxZoom,
+        minZoom: mapMinZoom
+    });
+
+    mapInit('mono');
+    function mapInit(style){      
         
         var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
         
@@ -42,10 +43,27 @@ $(document).ready(function(){
     }
 
     
-    $('#asphalt').on('click', function(){
-        
-        console.log('asphalt');
+    $('#modern').on('click', function(){
+        mapInit('mono');
     })
+
+    $('#asphalt').on('click', function(){
+        mapInit('asphalt');
+    })
+
+    $('#blue').on('click', function(){
+        mapInit('blue');
+    })
+
+    $('#nautical').on('click', function(){
+        mapInit('oldschool');
+    })
+
+    $('#pantone').on('click', function(){
+        mapInit('mono');
+    })
+
+
     
 })
 

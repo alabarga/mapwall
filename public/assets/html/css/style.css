@@ -1,3 +1,8 @@
+main section .footer ul li:first-child a{
+    font-size: 9px;
+    opacity: 0.54;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -65,8 +70,6 @@ header .title {
   margin: 0;
   text-transform: uppercase;
   -webkit-transition: color 0.8s ease-in-out;
-  -moz-transition: color 0.8s ease-in-out;
-  -ms-transition: color 0.8s ease-in-out;
   transition: color 0.8s ease-in-out;
 }
 header .cart {
@@ -80,8 +83,6 @@ header .cart {
   border-radius: 50%;
   vertical-align: middle;
   -webkit-transition: background 0.8s ease-in-out;
-  -moz-transition: background 0.8s ease-in-out;
-  -ms-transition: background 0.8s ease-in-out;
   transition: background 0.8s ease-in-out;
 }
 @media (max-width: 575px) {
@@ -107,15 +108,11 @@ header .cart svg {
   max-width: 60%;
   margin: 50% auto 0;
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 header .cart svg circle,
 header .cart svg path {
   -webkit-transition: fill 0.8s ease-in-out;
-  -moz-transition: fill 0.8s ease-in-out;
-  -ms-transition: fill 0.8s ease-in-out;
   transition: fill 0.8s ease-in-out;
 }
 header .menu {
@@ -130,8 +127,6 @@ header .menu {
 header .menu svg path,
 header .menu svg rect {
   -webkit-transition: stroke 0.8s ease-in-out;
-  -moz-transition: stroke 0.8s ease-in-out;
-  -ms-transition: stroke 0.8s ease-in-out;
   transition: stroke 0.8s ease-in-out;
 }
 @media (min-width: 1200px) {
@@ -174,8 +169,6 @@ nav {
   right: 0;
   z-index: 10;
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 @media (max-width: 1199px) {
@@ -200,8 +193,6 @@ nav ul li span {
   padding: 15px 45px 5px 15px;
   border-bottom: 2px solid transparent;
   -webkit-transition: color 0.8s ease-in-out;
-  -moz-transition: color 0.8s ease-in-out;
-  -ms-transition: color 0.8s ease-in-out;
   transition: color 0.8s ease-in-out;
 }
 nav ul li.active span {
@@ -229,8 +220,6 @@ main .transition {
   height: 100%;
   top: 0;
   -webkit-transition: top 0.8s ease-in-out;
-  -moz-transition: top 0.8s ease-in-out;
-  -ms-transition: top 0.8s ease-in-out;
   transition: top 0.8s ease-in-out;
 }
 @media (min-width: 1200px) {
@@ -267,12 +256,8 @@ main section .pagetitle {
   letter-spacing: 2px;
   text-transform: uppercase;
   -webkit-transition: color 0.15s ease-in-out;
-  -moz-transition: color 0.15s ease-in-out;
-  -ms-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
   -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 @media (max-width: 1199px) {
@@ -431,8 +416,6 @@ main section .content .tab-pane .alert {
   overflow: hidden;
   border-radius: 20px;
   -webkit-transition: opacity 0.15s ease-in-out;
-  -moz-transition: opacity 0.15s ease-in-out;
-  -ms-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
 }
 main section .content .tab-pane .alert.fade-in-out {
@@ -474,6 +457,7 @@ main section .content .tab-pane .radio input:checked + .radio-body {
 main section .content .config .show-style {
   width: 100%;
   margin: 0 0 20px;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 main section .content .config .action {
@@ -527,6 +511,7 @@ main section .content .config .action .price {
 main section .map {
   height: 500px;
   border: 20px solid #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 991px) {
@@ -545,8 +530,6 @@ main section .map-container {
   height: 100%;
   top: 0;
   -webkit-transition: top 0.8s ease-in-out;
-  -moz-transition: top 0.8s ease-in-out;
-  -ms-transition: top 0.8s ease-in-out;
   transition: top 0.8s ease-in-out;
 }
 @media (min-width: 1200px) {
@@ -584,6 +567,7 @@ main section .map-container .zoom-out {
   width: 22px;
   cursor: pointer;
   border-radius: 2px;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
   background: #fff;
   background: #fff url('../images/icons/icon-minus.svg') no-repeat center;
@@ -607,7 +591,7 @@ main section .map-container .caption {
   text-align: center;
   padding: 70px 15px 10px;
   word-break: break-word;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(50%, #fff), color-stop(50%, #fff));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(50%, #fff), color-stop(0, #fff));
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 50%, #fff 0);
 }
 main section .map-container .caption .city {
@@ -714,8 +698,6 @@ main section .footer ul li a {
   color: #fff;
   text-transform: uppercase;
   -webkit-transition: color 0.15s ease-in-out;
-  -moz-transition: color 0.15s ease-in-out;
-  -ms-transition: color 0.15s ease-in-out;
   transition: color 0.15s ease-in-out;
 }
 main section .footer ul li a:hover {
