@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $('form.config').on('submit', function(e) {
+        e.preventDefault();
+    })
+
     /*=================== TEXT on MAP =======================*/
     $('#map_city').keyup(function() {
         $('.city').text(this.value);        
@@ -19,6 +23,27 @@ $(document).ready(function(){
         $('.subtitle').text(this.value);
     });
 
+
+    /*=====================   SEARCH   =======================*/
+    $('#search').change(function(){
+        var search = this.value;
+        $.post('search', {search: $.trim(search)}, res => {
+            var zoom = map.getZoom();
+
+            mapInit('mono', res.lat, res.lng, zoom);
+
+            $('.city').text(res.title);
+            $('#map_city').val(res.title);
+
+            $('.country span').text(res.country);
+            $('#map_country').val(res.country);
+
+            $('.subtitle').text(res.lat + ' / ' + res.lng);
+            $('#map_subtitle').val(res.lat + ' / ' + res.lng);
+        })
+    });
+
+
     /*===================== MAP INIT =========================*/
     
     const mapMinZoom = 1;
@@ -29,8 +54,8 @@ $(document).ready(function(){
         minZoom: mapMinZoom
     });
 
-    mapInit('mono');
-    function mapInit(style){      
+    mapInit('mono', 0, 0, 0);
+    function mapInit(style, lat, lng, zoom){
         
         var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
         
@@ -39,7 +64,7 @@ $(document).ready(function(){
             maxZoom: mapMaxZoom
         }).addTo( map );
 
-        map.setView([0, 0], 0);
+        map.setView([lat, lng], zoom);
     }
 
     
@@ -62,8 +87,6 @@ $(document).ready(function(){
     $('#pantone').on('click', function(){
         mapInit('mono');
     })
-
-
     
 })
 

@@ -59,25 +59,6 @@
     });
 
 
-   /* // Demo Test
-    const map = GeoMap( '#map' );
-
-    $( '#styles [name = type]' ).on('change', function () {
-        let value = $( this ).val();
-
-        $.get('json/' + value + '.json', ( response ) => {
-			try {
-                var object = new google.maps.StyledMapType( response );
-			} catch ( error ) {
-				console.error( 'Syntax Error' )
-			}
-
-			map.mapTypes.set(value, object);
-			map.setMapTypeId( value );
-		})
-    });*/
-
-    
     // Event Window
     $( window ).on('resize', function () {
         transition.css('top', -index * document.body.clientHeight);

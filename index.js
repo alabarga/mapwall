@@ -1,10 +1,10 @@
-const express = require( 'express' );
-const http = require( 'http' );
-const path = require( 'path' ); 
-const nunjucks = require( 'nunjucks' );
-const bodyParser = require( 'body-parser' );
+const express 		= require( 'express' );
+const http 			= require( 'http' );
+const path 			= require( 'path' );
+const nunjucks 		= require( 'nunjucks' );
+const bodyParser 	= require( 'body-parser' );
 
-const app = express();
+const app 			= express();
 
 global.__public = path.join(__dirname, '/public/');
 
