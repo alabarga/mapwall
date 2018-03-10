@@ -90,6 +90,25 @@ $(document).ready(function(){
         });
     })
 
+    var labels = document.getElementById('labels');
+    labels.style.position = 'relative';
+
+    domtoimage.toPng(labels)
+        .then(function (src) {
+            labels.style.position = 'absolute';
+            var img = new Image();
+            // var dimensions = $('.print_size:checked').val();
+            // dimensions = dimensions.split('/');
+            // img.width = dimensions[0];
+            // img.height = dimensions[1];
+            img.src = src;
+            document.getElementById('images').innerHTML = '';
+            document.getElementById('images').appendChild(img);
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
+        });
+
     /*===================== BUILD IMG =========================*/
     function buildImg(map){
         leafletImage(map, function(err, canvas) {
@@ -104,6 +123,8 @@ $(document).ready(function(){
             img.src = canvas.toDataURL();
             document.getElementById('images').innerHTML = '';
             document.getElementById('images').appendChild(img);
+
+
         });
     }
 
