@@ -9,8 +9,10 @@
     module.exports = function leafletImage(map, callback) {
 
         var hasMapbox = !!L.mapbox;
+        var size = $('.print_size:checked').val();
+        size = size.split('/');
 
-        var dimensions = map.getSize(),
+        var dimensions = {x: size[0], y: size[1]},
             layerQueue = new queue(1);
 
         var canvas = document.createElement('canvas');
@@ -165,7 +167,8 @@
                 };
                 var src = url.substr(26);  // Обрезаем https://tiles.mapiful.com/
                 var arr = src.split('?');  // Вырезаем cache=1520651447810
-                src = 'assets/temp_img/' + arr[0];
+                var hash = localStorage.getItem('hash');
+                src = 'assets/temp_img/' + hash + '/' + arr[0];
                 im.src = src;
             }
 

@@ -1,7 +1,6 @@
 const express   = require('express');
 const router    = express.Router();
-const Parser    = require('../module/parser');
-const parser    = new Parser();
+const jimp      = require( 'jimp' );
 
 var googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyARNKILWOLm83HD1EDxTrVV0tjAhkCzHC8',
@@ -35,10 +34,17 @@ router.post('/search', (request, response, next) => {
 
 router.post('/parse', (request, response, next) => {
     var url = request.body.image;
+    var hash = request.body.hash;
     var name = url.substr(26);  // Обрезаем https://tiles.mapiful.com/
-    name = 'assets/temp_img/' + name;
-    var data = {url: url, name: name};
-    response.send(parser.getImage(data));
+    name = 'assets/temp_img/' + hash + '/' + name;
+
+    jimp.read(url).then(function (image){
+        return image.write( __public + name );
+    }).then(function (){
+        response.send('done');
+    }).catch(function (err) {
+        console.error(err);
+    });
 });
 
 

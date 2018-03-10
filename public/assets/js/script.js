@@ -29,8 +29,8 @@ $(document).ready(function(){
         var search = this.value;
         $.post('search', {search: $.trim(search)}, res => {
             var zoom = map.getZoom();
-
-            mapInit('mono', res.lat, res.lng, zoom);
+            var style = $('.map_style:checked').val();
+            mapInit(style, res.lat, res.lng, zoom);
 
             $('.city').text(res.title);
             $('#map_city').val(res.title);
@@ -45,33 +45,49 @@ $(document).ready(function(){
 
 
     /*===================== MAP INIT =========================*/
-    
     const mapMinZoom = 1;
     const mapMaxZoom = 20;
 
     var map = L.map('map', {
         maxZoom: mapMaxZoom,
         minZoom: mapMinZoom,
+        maxBoundsViscosity: 1.0,
         preferCanvas: true
     });
 
-    mapInit('mono', 0, 0, 0);
+    var southWest = L.latLng(-89.98155760646617, -180);
+    var northEast = L.latLng(89.99346179538875, 180);
+    var bounds = L.latLngBounds(southWest, northEast);
+    map.setMaxBounds(bounds);
+
+    var style = $('.map_style:checked').val();
+    mapInit(style, 0, 0, 0);
     function mapInit(style, lat, lng, zoom){
         $('.leaflet-tile-pane').empty();
-        var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
+        map.eachLayer(function(layer){
+            map.removeLayer(layer);
+        });
 
+        var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
         L.tileLayer(layer, {
             minZoom: mapMinZoom,
             maxZoom: mapMaxZoom
         }).addTo( map );
-        map.setView([lat, lng], zoom);
+
+        if(lat != undefined && lng != undefined && zoom !=undefined) map.setView([lat, lng], zoom);
     }
 
     $('#add_cart').on('click', function(){
+        var ajax_count = 0;
+        var img_count = $('.leaflet-tile-container img').length;
+        var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
+        localStorage.setItem('hash', hash);
         $('.leaflet-tile-container img').each(function(i){
-            $.post('parse', {image: this.src});
+            $.post('parse', {image: this.src, hash: hash}, res => {
+                if(res =='done') ajax_count++;
+                if(ajax_count == img_count) buildImg(map);
+            });
         });
-        buildImg(map);
     })
 
     /*===================== BUILD IMG =========================*/
@@ -80,9 +96,11 @@ $(document).ready(function(){
             console.log(map.getSize());
 
             var img = document.createElement('img');
-            var dimensions = map.getSize();
-            img.width = dimensions.x;
-            img.height = dimensions.y;
+            var dimensions = $('.print_size:checked').val();
+            dimensions = dimensions.split('/');
+            img.width = dimensions[0];
+            img.height = dimensions[1];
+
             img.src = canvas.toDataURL();
             document.getElementById('images').innerHTML = '';
             document.getElementById('images').appendChild(img);
@@ -90,26 +108,8 @@ $(document).ready(function(){
     }
 
     /*===================== CHANGE STYLE =========================*/
-
-    $('#modern').on('click', function(){
-        mapInit('mono');
+    $('.map_style').on('click', function(){
+        mapInit(this.value);
     })
-
-    $('#asphalt').on('click', function(){
-        mapInit('asphalt');
-    })
-
-    $('#blue').on('click', function(){
-        mapInit('blue');
-    })
-
-    $('#nautical').on('click', function(){
-        mapInit('oldschool');
-    })
-
-    $('#pantone').on('click', function(){
-        mapInit('mono');
-    })
-    
 })
 
