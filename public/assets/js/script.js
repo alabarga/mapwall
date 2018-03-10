@@ -68,15 +68,17 @@ $(document).ready(function(){
     }
 
     $('#add_cart').on('click', function(){
-        //console.log(map.getTopLeft());
+        $('.leaflet-tile-container img').each(function(i){
+            $.post('parse', {image: this.src});
+        });
         buildImg(map);
     })
 
     /*===================== BUILD IMG =========================*/
     function buildImg(map){
         leafletImage(map, function(err, canvas) {
-            // now you have canvas
-            // example thing to do with that canvas:
+            console.log(map.getSize());
+
             var img = document.createElement('img');
             var dimensions = map.getSize();
             img.width = dimensions.x;
