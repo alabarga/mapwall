@@ -51,23 +51,44 @@ $(document).ready(function(){
 
     var map = L.map('map', {
         maxZoom: mapMaxZoom,
-        minZoom: mapMinZoom
+        minZoom: mapMinZoom,
+        preferCanvas: true
     });
 
     mapInit('mono', 0, 0, 0);
     function mapInit(style, lat, lng, zoom){
-        
+        $('.leaflet-tile-pane').empty();
         var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
-        
+
         L.tileLayer(layer, {
             minZoom: mapMinZoom,
             maxZoom: mapMaxZoom
         }).addTo( map );
-
         map.setView([lat, lng], zoom);
     }
 
-    
+    $('#add_cart').on('click', function(){
+        //console.log(map.getTopLeft());
+        buildImg(map);
+    })
+
+    /*===================== BUILD IMG =========================*/
+    function buildImg(map){
+        leafletImage(map, function(err, canvas) {
+            // now you have canvas
+            // example thing to do with that canvas:
+            var img = document.createElement('img');
+            var dimensions = map.getSize();
+            img.width = dimensions.x;
+            img.height = dimensions.y;
+            img.src = canvas.toDataURL();
+            document.getElementById('images').innerHTML = '';
+            document.getElementById('images').appendChild(img);
+        });
+    }
+
+    /*===================== CHANGE STYLE =========================*/
+
     $('#modern').on('click', function(){
         mapInit('mono');
     })

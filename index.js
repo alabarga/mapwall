@@ -3,8 +3,12 @@ const http 			= require( 'http' );
 const path 			= require( 'path' );
 const nunjucks 		= require( 'nunjucks' );
 const bodyParser 	= require( 'body-parser' );
-
 const app 			= express();
+const cors 			= require('cors');
+
+app.use(cors());
+app.options('*', cors());
+
 
 global.__public = path.join(__dirname, '/public/');
 

@@ -19,10 +19,12 @@ router.post('/search', (request, response, next) => {
             var result = {};
             var json = data.json.results[0];
             result.title = json.address_components[0].long_name;
-            result.country = json.address_components[json.address_components.length-1].long_name;
+            for(let i = 0; i<=json.address_components.length-1; i++){
+                 if(json.address_components[i].types[0] == 'country') result.country = json.address_components[i].long_name;
+            }
             result.lat = json.geometry.location.lat;
             result.lng = json.geometry.location.lng;
-            console.log(JSON.stringify(data.json.results[0]));
+            //console.log(JSON.stringify(json));
             response.send(result);
         })
         .catch((err) => {
