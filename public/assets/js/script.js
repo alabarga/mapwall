@@ -30,6 +30,7 @@ $(document).ready(function(){
         $.post('search', {search: $.trim(search)}, res => {
             var zoom = map.getZoom();
             var style = $('.map_style:checked').val();
+            if(zoom < 7) zoom = 7;
             mapInit(style, res.lat, res.lng, zoom);
 
             $('.city').text(res.title);
@@ -45,7 +46,7 @@ $(document).ready(function(){
 
 
     /*===================== MAP INIT =========================*/
-    const mapMinZoom = 1;
+    const mapMinZoom = 2;
     const mapMaxZoom = 20;
 
     var map = L.map('map', {
@@ -83,48 +84,50 @@ $(document).ready(function(){
         var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
         localStorage.setItem('hash', hash);
         $('.leaflet-tile-container img').each(function(i){
-            $.post('parse', {image: this.src, hash: hash}, res => {
-                if(res =='done') ajax_count++;
-                if(ajax_count == img_count) buildImg(map);
-            });
+            $.ajax({
+                type:  'post',
+                async: false,
+                url:   '/parse',
+                data:  {image: this.src, hash: hash},
+                success: function(res) {
+                    if(res =='done') ajax_count++;
+                    if(ajax_count == img_count) buildImg(map);
+                }
+            })
         });
     })
 
-    var labels = document.getElementById('labels');
-    labels.style.position = 'relative';
-
-    domtoimage.toPng(labels)
-        .then(function (src) {
-            labels.style.position = 'absolute';
-            var img = new Image();
-            // var dimensions = $('.print_size:checked').val();
-            // dimensions = dimensions.split('/');
-            // img.width = dimensions[0];
-            // img.height = dimensions[1];
-            img.src = src;
-            document.getElementById('images').innerHTML = '';
-            document.getElementById('images').appendChild(img);
-        })
-        .catch(function (error) {
-            console.error('oops, something went wrong!', error);
-        });
 
     /*===================== BUILD IMG =========================*/
     function buildImg(map){
         leafletImage(map, function(err, canvas) {
-            console.log(map.getSize());
+            try {
+                console.log(canvas);
+                var img = document.createElement('img');
+                var dimensions = $('.print_size:checked').val();
+                dimensions = dimensions.split('/');
+                img.width = dimensions[0];
+                img.height = dimensions[1];
+                img.src = canvas.toDataURL();
+                var map_src = img.src;
+                // document.getElementById('images').innerHTML = '';
+                // document.getElementById('images').appendChild(img);
 
-            var img = document.createElement('img');
-            var dimensions = $('.print_size:checked').val();
-            dimensions = dimensions.split('/');
-            img.width = dimensions[0];
-            img.height = dimensions[1];
-
-            img.src = canvas.toDataURL();
-            document.getElementById('images').innerHTML = '';
-            document.getElementById('images').appendChild(img);
-
-
+                var labels = document.getElementById('labels');
+                labels.style.position = 'relative';
+            } catch ( err ) {
+                console.error('buildImg(map) error: ', err);
+            }
+            domtoimage.toPng(labels)
+                .then(function (labels_src) {
+                    labels.style.position = 'absolute';
+                    $.post('save', {map_src: map_src, labels_src: labels_src}, res => {
+                        console.log('save: ', res);
+                    });
+                })
+                .catch(function (error) {
+                    console.error('domtoimage.toPng(labels) error: ', error);
+                });
         });
     }
 
