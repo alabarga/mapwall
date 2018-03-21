@@ -13,6 +13,10 @@ router.get('/', (request, response, next) => {
 	response.render( 'index' );
 });
 
+router.get('/cart', (request, response, next) => {
+    response.render( 'cart' );
+});
+
 router.get('/print', (request, response, next) => {
     response.render( 'print' );
 });
@@ -85,17 +89,35 @@ router.post('/save', (request, response, next) => {
     var map_src = request.body.map_src;
     var map_data = map_src.replace(/^data:image\/\w+;base64,/, "");
     var map_buffer = new Buffer(map_data, 'base64');
+/*
     fs.writeFile( __public + 'assets/print_img/'+hash+'_map.png', map_buffer, function(error) {
         if (error) throw error;
     })
+*/
 
 
     var labels_src = request.body.labels_src;
     var labels_data = labels_src.replace(/^data:image\/\w+;base64,/, "");
     var labels_buffer = new Buffer(labels_data, 'base64');
-    fs.writeFile( __public + 'assets/print_img/'+hash+'_lables.png', labels_buffer, function(error) {
+  /*  fs.writeFile( __public + 'assets/print_img/'+hash+'_lables.png', labels_buffer, function(error) {
         if (error) throw error;
-    })
+    })*/
+
+
+    jimp.read(map_buffer)
+        .then(function (result) {
+            map = result;
+            return jimp.read(labels_buffer)
+        })
+        .then(function (lables) {
+            return map.composite(lables, 0, 942)
+        })
+        .then(function (image) {
+            image.write(__public + 'assets/print_img/result.png');
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
 
 
     response.send('done');

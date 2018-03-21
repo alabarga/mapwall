@@ -103,68 +103,68 @@ $(document).ready(function () {
 
     });
     */
-
-    $('#add_cart').on('click', function () {
-        var ajax_count = 0;
-        var img_count = $('.leaflet-tile-container img').length;
-        var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
-        localStorage.setItem('hash', hash);
-        $('.leaflet-tile-container img').each(function (i) {
-            $.ajax({
-                type: 'post',
-                async: false,
-                url: '/parse',
-                data: {
-                    image: this.src,
-                    hash: hash
-                },
-                success: function (res) {
-                    if (res == 'done') ajax_count++;
-                    if (ajax_count == img_count) buildImg(map);
-                }
-            })
-        });
-    })
-
-
-    /*===================== BUILD IMG =========================*/
-    function buildImg(map) {
-        leafletImage(map, function (err, canvas) {
-            try {
-                console.log(canvas);
-                var img = document.createElement('img');
-                var dimensions = $('.print_size:checked').val();
-                dimensions = dimensions.split('/');
-                img.width = dimensions[0];
-                img.height = dimensions[1];
-                img.src = canvas.toDataURL();
-                var map_src = img.src;
-                // document.getElementById('images').innerHTML = '';
-                // document.getElementById('images').appendChild(img);
-
-                var labels = document.getElementById('labels');
-                labels.style.position = 'relative';
-            } catch (err) {
-                console.error('buildImg(map) error: ', err);
-            }
-            domtoimage.toPng(labels)
-                .then(function (labels_src) {
-                    labels.style.position = 'absolute';
-                    $.post('save', {
-                        map_src: map_src,
-                        labels_src: labels_src
-                    }, res => {
-                        console.log('save: ', res);
-                    });
-                })
-                .catch(function (error) {
-                    console.error('domtoimage.toPng(labels) error: ', error);
-                });
-        });
-    }
-
+    
+   
     /*===================== CHANGE STYLE =========================*/
     $('.map_style').on('click', function () {
         mapInit(this.value);
     })
 });
+
+$('#add_cart').on('click', function () {
+    var ajax_count = 0;
+    var img_count = $('.leaflet-tile-container img').length;
+    var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
+    localStorage.setItem('hash', hash);
+    $('.leaflet-tile-container img').each(function (i) {
+        $.ajax({
+            type: 'post',
+            async: false,
+            url: '/parse',
+            data: {
+                image: this.src,
+                hash: hash
+            },
+            success: function (res) {
+                if (res == 'done') ajax_count++;
+                if (ajax_count == img_count) buildImg(map);
+            }
+        })
+    });
+})
+
+/*===================== BUILD IMG =========================*/
+function buildImg(map) {
+    leafletImage(map, function (err, canvas) {
+        try {
+            console.log(canvas);
+            var img = document.createElement('img');
+            var dimensions = $('.print_size:checked').val();
+            dimensions = dimensions.split('/');
+            img.width = dimensions[0];
+            img.height = dimensions[1];
+            img.src = canvas.toDataURL();
+            var map_src = img.src;
+            // document.getElementById('images').innerHTML = '';
+            // document.getElementById('images').appendChild(img);
+
+            var labels = document.getElementById('labels');
+            labels.style.position = 'relative';
+        } catch (err) {
+            console.error('buildImg(map) error: ', err);
+        }
+        domtoimage.toPng(labels)
+            .then(function (labels_src) {
+                labels.style.position = 'absolute';
+                $.post('save', {
+                    map_src: map_src,
+                    labels_src: labels_src
+                }, res => {
+                    console.log('save: ', res);
+                });
+            })
+            .catch(function (error) {
+                console.error('domtoimage.toPng(labels) error: ', error);
+            });
+    });
+}
