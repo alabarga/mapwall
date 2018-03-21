@@ -1,16 +1,15 @@
-main section .footer ul li:first-child a{
-    font-size: 9px;
-    opacity: 0.54;
-}
-
+@charset "UTF-8";
+/* line 34, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 * {
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-}
+  -webkit-font-smoothing: antialiased; }
+
+/* line 40, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 html {
-  height: 100%;
-}
+  height: 100%; }
+
+/* line 44, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 article,
 aside,
 details,
@@ -23,733 +22,1344 @@ main,
 nav,
 section,
 summary {
-  display: block;
-}
+  display: block; }
+
+/* line 59, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 body {
-  font: 16px 'Proxima Nova Regular', sans-serif;
+  font: 16px "Proxima Nova Regular", sans-serif;
   height: 100%;
-  color: #000;
-}
+  color: #000; }
+
+/* line 65, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 img {
-  max-width: 100%;
-}
+  max-width: 100%; }
+
+/* line 69, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 .wrapper {
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
+  /* line 73, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .wrapper.basket-page .logo {
+    color: black; }
+  /* line 76, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .wrapper.basket-page .title {
+    color: #000; }
+    /* line 79, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .wrapper.basket-page .title .logo .st0 {
+      fill: transparent;
+      stroke: #000; }
+    /* line 83, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .wrapper.basket-page .title .logo .st1 {
+      fill: #000;
+      stroke: #000; }
+  /* line 90, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .wrapper.basket-page .menu path,
+  .wrapper.basket-page .menu rect {
+    stroke: #000; }
+  /* line 95, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .wrapper.basket-page .cart {
+    background: #000; }
+    /* line 98, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .wrapper.basket-page .cart svg circle,
+    .wrapper.basket-page .cart svg path {
+      fill: #fff; }
+
+/* line 107, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 .container {
-  position: relative;
-}
+  position: relative; }
+
+/* line 111, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 .icon {
-  display: inline-block;
-}
-.icon-cart {
-  height: 16px;
-  width: 20px;
-  background: url('../images/icons/icon-cart.svg') no-repeat center;
-  background-size: cover;
-}
+  display: inline-block; }
+  /* line 113, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .icon-cart {
+    height: 16px;
+    width: 20px;
+    background: url("../images/icons/icon-cart.svg") no-repeat center;
+    background-size: cover; }
+
 /* Header
 -----------------------------------------------------------------------------*/
+/* line 141, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 header {
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   z-index: 5;
-  padding: 30px 0 0;
-}
-@media (max-width: 1199px) {
-  header {
-    position: absolute;
-  }
-}
-header .title {
-  font: 21px 'Proxima Nova Bold', sans-serif;
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  -webkit-transition: color 0.8s ease-in-out;
-  transition: color 0.8s ease-in-out;
-}
-header .cart {
-  position: relative;
-  display: inline-block;
-  height: 34px;
-  width: 34px;
-  margin-right: 30px;
-  text-align: center;
-  background: #fff;
-  border-radius: 50%;
-  vertical-align: middle;
-  -webkit-transition: background 0.8s ease-in-out;
-  transition: background 0.8s ease-in-out;
-}
-@media (max-width: 575px) {
-  header .cart {
-    margin-right: 15px;
-  }
-}
-header .cart-total {
-  font-size: 10px;
-  position: absolute;
-  display: block;
-  color: #fff;
-  min-height: 15px;
-  min-width: 18px;
-  padding: 3px;
-  z-index: 1;
-  top: -5px;
-  right: -5px;
-  background: #f9593a;
-  border-radius: 50%;
-}
-header .cart svg {
-  max-width: 60%;
-  margin: 50% auto 0;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-header .cart svg circle,
-header .cart svg path {
-  -webkit-transition: fill 0.8s ease-in-out;
-  transition: fill 0.8s ease-in-out;
-}
-header .menu {
-  display: inline-block;
-  height: 55px;
-  width: 55px;
-  border: 0;
-  cursor: pointer;
-  vertical-align: middle;
-  background: none;
-}
-header .menu svg path,
-header .menu svg rect {
-  -webkit-transition: stroke 0.8s ease-in-out;
-  transition: stroke 0.8s ease-in-out;
-}
-@media (min-width: 1200px) {
-  header[data-theme='dark'] .title {
+  padding: 30px 0 0; }
+  @media (max-width: 1199px) {
+    /* line 141, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header {
+      position: absolute; } }
+  /* line 151, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  header .title {
+    font: 21px "Proxima Nova Bold", sans-serif;
     color: #fff;
-  }
-  header[data-theme='dark'] .menu path,
-  header[data-theme='dark'] .menu rect {
-    stroke: #fff;
-  }
-  header[data-theme='dark'] .cart {
+    margin: 0;
+    text-transform: uppercase;
+    -webkit-transition: color 0.8s ease-in-out;
+    -moz-transition: color 0.8s ease-in-out;
+    -ms-transition: color 0.8s ease-in-out;
+    transition: color 0.8s ease-in-out; }
+  /* line 159, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  header .cart {
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    width: 34px;
+    margin-right: 30px;
+    text-align: center;
     background: #fff;
-  }
-  header[data-theme='dark'] .cart svg circle,
-  header[data-theme='dark'] .cart svg path {
-    fill: #595959;
-  }
-}
-@media (min-width: 1200px) {
-  header[data-theme='light'] .title {
-    color: #000;
-  }
-  header[data-theme='light'] .menu path,
-  header[data-theme='light'] .menu rect {
-    stroke: #000;
-  }
-  header[data-theme='light'] .cart {
-    background: #000;
-  }
-  header[data-theme='light'] .cart svg circle,
-  header[data-theme='light'] .cart svg path {
-    fill: #fff;
-  }
-}
+    border-radius: 50%;
+    vertical-align: middle;
+    -webkit-transition: background 0.8s ease-in-out;
+    -moz-transition: background 0.8s ease-in-out;
+    -ms-transition: background 0.8s ease-in-out;
+    transition: background 0.8s ease-in-out; }
+    @media (max-width: 575px) {
+      /* line 159, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header .cart {
+        margin-right: 15px; } }
+    /* line 174, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header .cart-total {
+      font-size: 10px;
+      position: absolute;
+      display: block;
+      color: #fff;
+      min-height: 15px;
+      min-width: 18px;
+      padding: 3px;
+      z-index: 1;
+      top: -5px;
+      right: -5px;
+      background: #f9593a;
+      border-radius: 50%; }
+    /* line 188, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header .cart svg {
+      max-width: 60%;
+      margin: 50% auto 0;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+      /* line 192, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header .cart svg circle,
+      header .cart svg path {
+        -webkit-transition: fill 0.8s ease-in-out;
+        -moz-transition: fill 0.8s ease-in-out;
+        -ms-transition: fill 0.8s ease-in-out;
+        transition: fill 0.8s ease-in-out; }
+  /* line 199, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  header .menu {
+    display: inline-block;
+    height: 55px;
+    width: 55px;
+    border: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    background: none;
+    outline: none;
+    z-index: 10;
+    position: relative; }
+    /* line 211, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header .menu.active #menu {
+      stroke: #000; }
+    /* line 215, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header .menu:focus, header .menu:hover {
+      outline: none; }
+    /* line 220, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header .menu svg path,
+    header .menu svg rect {
+      -webkit-transition: stroke 0.8s ease-in-out;
+      -moz-transition: stroke 0.8s ease-in-out;
+      -ms-transition: stroke 0.8s ease-in-out;
+      transition: stroke 0.8s ease-in-out; }
+  @media (min-width: 1200px) {
+    /* line 229, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='dark'] .logo {
+      color: white; }
+    /* line 232, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='dark'] .title {
+      color: #fff; }
+    /* line 236, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='dark'] .menu path,
+    header[data-theme='dark'] .menu rect {
+      stroke: #fff; }
+    /* line 240, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='dark'] .menu.active {
+      stroke: #000; }
+      /* line 242, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header[data-theme='dark'] .menu.active path,
+      header[data-theme='dark'] .menu.active rect {
+        stroke: #000; }
+    /* line 248, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='dark'] .cart {
+      background: #fff; }
+      /* line 251, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header[data-theme='dark'] .cart svg circle,
+      header[data-theme='dark'] .cart svg path {
+        fill: #595959; } }
+  @media (min-width: 1200px) {
+    /* line 261, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='light'] .title {
+      color: #000; }
+      /* line 263, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header[data-theme='light'] .title .logo {
+        color: black; }
+        /* line 265, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        header[data-theme='light'] .title .logo .st0 {
+          fill: transparent;
+          stroke: #000; }
+        /* line 269, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        header[data-theme='light'] .title .logo .st1 {
+          fill: #000;
+          stroke: #000; }
+    /* line 276, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='light'] .menu path,
+    header[data-theme='light'] .menu rect {
+      stroke: #000; }
+    /* line 281, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    header[data-theme='light'] .cart {
+      background: #000; }
+      /* line 284, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      header[data-theme='light'] .cart svg circle,
+      header[data-theme='light'] .cart svg path {
+        fill: #fff; } }
+
+/* line 294, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+.logo {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  height: 35px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.35s; }
+  /* line 304, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .logo:hover {
+    text-decoration: none;
+    opacity: 0.94; }
+  /* line 308, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .logo div {
+    height: 25px;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: left;
+    text-align: left; }
+  /* line 316, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .logo img,
+  .logo svg {
+    width: 89px;
+    margin: 0 10px 0 0; }
+
 /* Nav
 -----------------------------------------------------------------------------*/
+/* line 327, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 nav {
   position: fixed;
   top: 50%;
   right: 0;
   z-index: 10;
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-@media (max-width: 1199px) {
-  nav {
-    display: none;
-  }
-}
-nav ul {
-  margin: 0;
-  list-style: none;
-}
-nav ul li {
-  display: block;
-  list-style: none;
-  cursor: pointer;
-  padding-bottom: 10px;
-}
-nav ul li span {
-  font-size: 14px;
-  display: block;
-  color: #fff;
-  padding: 15px 45px 5px 15px;
-  border-bottom: 2px solid transparent;
-  -webkit-transition: color 0.8s ease-in-out;
-  transition: color 0.8s ease-in-out;
-}
-nav ul li.active span {
-  border-bottom-color: #fdb116;
-}
-nav[data-theme='dark'] ul li span {
-  color: #fff;
-}
-nav[data-theme='light'] ul li span {
-  color: #000;
-}
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+  @media (max-width: 1199px) {
+    /* line 327, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    nav {
+      display: none; } }
+  /* line 336, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  nav ul {
+    margin: 0;
+    list-style: none; }
+    /* line 339, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    nav ul li {
+      display: block;
+      list-style: none;
+      cursor: pointer;
+      padding-bottom: 10px; }
+      /* line 344, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      nav ul li span {
+        font-size: 14px;
+        display: block;
+        color: #fff;
+        padding: 15px 45px 5px 15px;
+        border-bottom: 2px solid transparent;
+        -webkit-transition: color 0.8s ease-in-out;
+        -moz-transition: color 0.8s ease-in-out;
+        -ms-transition: color 0.8s ease-in-out;
+        transition: color 0.8s ease-in-out; }
+      /* line 354, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      nav ul li.active span {
+        border-bottom-color: #fdb116; }
+  /* line 361, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  nav[data-theme='dark'] ul li span {
+    color: #fff; }
+  /* line 366, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  nav[data-theme='light'] ul li span {
+    color: #000; }
+
 /* Middle
 -----------------------------------------------------------------------------*/
+/* line 376, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
 main {
-  position: relative;
-}
-@media (min-width: 1200px) {
-  main {
-    height: 100%;
-    overflow: hidden;
-  }
-}
-main .transition {
-  position: relative;
-  height: 100%;
-  top: 0;
-  -webkit-transition: top 0.8s ease-in-out;
-  transition: top 0.8s ease-in-out;
-}
-@media (min-width: 1200px) {
+  position: relative; }
+  @media (min-width: 1200px) {
+    /* line 376, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main {
+      height: 100%;
+      overflow: hidden; } }
+  /* line 382, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
   main .transition {
+    position: relative;
     height: 100%;
-  }
-}
-@media (max-width: 1199px) {
-  main .transition {
-    top: 0 !important;
-  }
-}
-@media (max-width: 1199px) {
-  main .h-100.h-auto {
-    height: auto !important;
-  }
-}
-main section {
-  background: url('../images/map.png') no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
-}
-@media (min-width: 1200px) {
+    top: 0;
+    -webkit-transition: top 0.8s ease-in-out;
+    -moz-transition: top 0.8s ease-in-out;
+    -ms-transition: top 0.8s ease-in-out;
+    transition: top 0.8s ease-in-out; }
+    @media (min-width: 1200px) {
+      /* line 382, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main .transition {
+        height: 100%; } }
+    @media (max-width: 1199px) {
+      /* line 382, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main .transition {
+        top: 0 !important; } }
+  @media (max-width: 1199px) {
+    /* line 395, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main .h-100.h-auto {
+      height: auto !important; } }
+  /* line 401, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  main .h-100 .col-lg-7 {
+    max-height: 509px; }
+  /* line 405, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
   main section {
-    height: 100%;
-  }
-}
-main section .pagetitle {
+    background: url("../images/map.png") no-repeat center;
+    background-size: cover;
+    background-attachment: fixed; }
+    @media (min-width: 1200px) {
+      /* line 405, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section {
+        height: 100%; } }
+    /* line 412, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .pagetitle {
+      position: absolute;
+      font-size: 13px;
+      color: #fff;
+      top: 50%;
+      left: -35px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      -webkit-transition: color 0.15s ease-in-out;
+      -moz-transition: color 0.15s ease-in-out;
+      -ms-transition: color 0.15s ease-in-out;
+      transition: color 0.15s ease-in-out;
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+      @media (max-width: 1199px) {
+        /* line 412, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .pagetitle {
+          display: none; } }
+    @media (min-width: 1199px) {
+      /* line 426, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .caption,
+      main section .content {
+        padding-left: 60px; } }
+    /* line 431, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .caption-title,
+    main section .content-title {
+      font: 57px "Proxima Nova Bold", sans-serif;
+      color: #fff;
+      line-height: 55px;
+      padding: 30px 15px 30px 30px;
+      border-left: 3px solid #fdb116; }
+      @media (max-width: 767px) {
+        /* line 431, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .caption-title,
+        main section .content-title {
+          font-size: 50px; } }
+      @media (max-width: 575px) {
+        /* line 431, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .caption-title,
+        main section .content-title {
+          font-size: 40px;
+          line-height: 45px;
+          padding: 15px; } }
+    /* line 446, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .caption-body,
+    main section .content-body {
+      font-size: 14px;
+      color: #fff;
+      line-height: 22px;
+      padding-left: 30px; }
+      @media (max-width: 575px) {
+        /* line 446, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .caption-body,
+        main section .content-body {
+          padding-left: 15px; } }
+      /* line 454, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .caption-body .btn,
+      main section .content-body .btn {
+        margin: 5px 0 0; }
+    /* line 459, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .content {
+      margin: 0 0 30px; }
+      @media (min-width: 992px) {
+        /* line 461, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content.offset-right {
+          padding-right: 30px; } }
+      /* line 466, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content-title {
+        font: 57px "Proxima Nova Bold", sans-serif;
+        color: #000;
+        line-height: 55px;
+        padding: 15px 15px 15px 30px;
+        border-left: 3px solid #fdb116;
+        margin: 0 0 15px; }
+        @media (max-width: 767px) {
+          /* line 466, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content-title {
+            font-size: 50px; } }
+        @media (max-width: 575px) {
+          /* line 466, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content-title {
+            font-size: 40px;
+            line-height: 45px;
+            padding: 15px; } }
+      /* line 482, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content p {
+        line-height: 24px; }
+      /* line 485, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content em {
+        font-family: "Proxima Nova Italic", sans-serif;
+        font-style: normal;
+        line-height: 24px;
+        color: fade(#000, 70%); }
+      /* line 494, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .nav-item.yellow .nav-link.active {
+        background: #fdb116; }
+      /* line 499, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .nav-item.red .nav-link.active {
+        background: #f9593a; }
+      /* line 504, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .nav-item.green .nav-link.active {
+        background: #418215; }
+      /* line 509, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .nav-link {
+        font: 14px "Proxima Nova Semibold", sans-serif;
+        color: #000;
+        border: 0;
+        height: 100%;
+        border-radius: 0;
+        padding: 20px 10px;
+        white-space: nowrap;
+        text-transform: uppercase;
+        background: #f2f5f7; }
+        @media (max-width: 575px) {
+          /* line 509, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .nav-link {
+            font-size: 13px; } }
+        /* line 522, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .nav-link.active {
+          color: #fff; }
+      /* line 528, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .tab-content {
+        overflow: hidden;
+        height: 55vh; }
+      /* line 532, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .tab-pane {
+        padding: 30px 30px 15px;
+        height: 100%;
+        overflow: auto; }
+        /* line 536, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane::-webkit-scrollbar {
+          width: 4px; }
+        /* line 539, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane::-webkit-scrollbar-thumb {
+          background: #d7d7d7;
+          border-radius: 5px; }
+        /* line 543, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane::-webkit-scrollbar-track-piece {
+          background: #707070; }
+        /* line 546, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane.yellow {
+          background: #fdb116; }
+          /* line 548, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane.yellow .form-control,
+          main section .content .tab-pane.yellow .form-control:focus {
+            border-color: #f2a915; }
+        /* line 553, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane.red {
+          background: #f9593a; }
+        /* line 556, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane.green {
+          background: #418215; }
+        /* line 559, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane .alert {
+          font-size: 14px;
+          color: #fff;
+          line-height: 20px;
+          border: 0;
+          padding: 20px;
+          overflow: hidden;
+          border-radius: 20px;
+          -webkit-transition: opacity 0.15s ease-in-out;
+          -moz-transition: opacity 0.15s ease-in-out;
+          -ms-transition: opacity 0.15s ease-in-out;
+          transition: opacity 0.15s ease-in-out; }
+          /* line 568, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane .alert.fade-in-out {
+            display: none;
+            opacity: 0; }
+          /* line 572, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane .alert-warning {
+            background: #fbbf43; }
+          /* line 575, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane .alert-danger {
+            background: #f87860; }
+        /* line 579, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane .params {
+          margin: 0 -5px; }
+          /* line 581, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane .params li {
+            list-style: none;
+            padding: 0 5px;
+            display: inline-block; }
+            /* line 585, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .content .tab-pane .params li .radio {
+              width: 100%; }
+        /* line 591, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane .radio-body {
+          font-size: 12px;
+          color: #fff;
+          height: 40px;
+          cursor: pointer;
+          padding: 0 15px;
+          line-height: 42px;
+          background: #376b14; }
+        /* line 600, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .tab-pane .radio input {
+          display: none; }
+          /* line 603, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .tab-pane .radio input:checked + .radio-body {
+            background: #294913; }
+      /* line 612, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .config .show-style {
+        width: 100%;
+        margin: 0 0 20px;
+        box-shadow: 0 3px 10px fade(#000, 40%); }
+      /* line 617, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .content .config .action {
+        position: relative;
+        display: table;
+        width: 100%;
+        height: 50px;
+        background: #464646; }
+        /* line 623, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .config .action button {
+          font: 14px "Proxima Nova Semibold", sans-serif;
+          color: #fff;
+          display: table-cell;
+          text-align: center;
+          width: 100%;
+          height: 50px;
+          border: 0;
+          text-transform: uppercase;
+          cursor: pointer;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          background: #464646; }
+        /* line 638, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .content .config .action .price {
+          font: 16px "Proxima Nova Semibold", sans-serif;
+          position: relative;
+          display: table-cell;
+          color: #fff;
+          width: 25%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+          height: 50px;
+          padding: 0 30px;
+          line-height: 50px;
+          background: #636363; }
+        @media (max-width: 575px) {
+          /* line 617, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .content .config .action {
+            display: block;
+            height: auto; }
+            /* line 656, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .content .config .action button,
+            main section .content .config .action .price {
+              display: block;
+              width: 100%; } }
+    /* line 665, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .w {
+      position: absolute;
+      left: 50%;
+      transform-origin: 50% 50% 0px;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.18); }
+      /* line 671, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w .leaflet-control-container {
+        transform: scale(4.5); }
+      /* line 675, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w .leaflet-pane.reset {
+        transform: none; }
+      /* line 679, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w1 {
+        transform: translate(-50%, -50%) scale(0.16); }
+        /* line 681, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w1.horizontal {
+          transform: translate(-50%, -50%) scale(0.23); }
+          /* line 683, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .w.w1.horizontal .map {
+            width: 1984px;
+            height: 1388.45px; }
+        /* line 688, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w1 .map {
+          /*
+                    width: 850px;
+                    height: 1134px;
+                    */ }
+      /* line 695, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w2 {
+        transform: translate(-50%, -50%) scale(0.17); }
+        /* line 697, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w2.horizontal {
+          transform: translate(-50%, -50%) scale(0.24); }
+          /* line 699, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .w.w2.horizontal .map {
+            width: 1984px;
+            height: 1388.45px; }
+        /* line 704, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w2 .map {
+          /*
+                    width: 1417px;
+                    height: 1984px;
+                    */ }
+      /* line 711, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w3 {
+        transform: translate(-50%, -50%) scale(0.18); }
+        /* line 713, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w3.horizontal {
+          transform: translate(-50%, -50%) scale(0.25); }
+          /* line 715, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .w.w3.horizontal .map {
+            width: 1984px;
+            height: 1388.45px; }
+        /* line 720, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .w.w3 .map {
+          /*
+                    width: 1984px;
+                    height: 2835px;
+                    */ }
+          /* line 725, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .w.w3 .map #labels {
+            transform: scale(1); }
+    /* line 732, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .map {
+      width: 1984px;
+      height: 2835px;
+      border: 20px solid #fff;
+      -webkit-box-shadow: 2px 2px 45px rgba(0, 0, 0, 0.25);
+      box-shadow: 2px 2px 45px rgba(0, 0, 0, 0.25); }
+      /* line 740, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .map .leaflet-control-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999; }
+      @media (max-width: 991px) {
+        /* line 732, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .map {
+          margin: 0; } }
+      /* line 751, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .map-container {
+        position: relative;
+        height: 100%;
+        opacity: 0;
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        -ms-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out; }
+        /* line 756, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .map-container .draggable {
+          position: absolute;
+          z-index: 2;
+          top: 0;
+          left: 0;
+          right: 0;
+          cursor: pointer;
+          bottom: 0;
+          z-index: 3; }
+        /* line 766, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .map-container.loading {
+          opacity: 1; }
+        /* line 769, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .map-container .zoom {
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          z-index: 4; }
+          /* line 774, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .map-container .zoom-in, main section .map-container .zoom-out {
+            height: 22px;
+            width: 22px;
+            cursor: pointer;
+            border-radius: 2px;
+            box-shadow: 0 0 6px fade(#000, 15%);
+            background: #fff;
+            background: #fff url("../images/icons/icon-minus.svg") no-repeat center;
+            background-size: 62.8%; }
+            /* line 784, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .map-container .zoom-in.disabled, main section .map-container .zoom-out.disabled {
+              opacity: 0.7;
+              cursor: default; }
+          /* line 789, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .map-container .zoom-in {
+            margin: 0 0 3px;
+            background-image: url("../images/icons/icon-plus.svg");
+            background-size: 50%; }
+        /* line 795, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .map-container .caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          padding: 70px 15px 89px;
+          word-break: break-word;
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(50%, #fff), color-stop(50%, #fff));
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 50%, #fff 0); }
+          /* line 805, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .map-container .caption .city {
+            font-family: "Proxima Nova Bold", sans-serif;
+            color: #000;
+            margin: 0 0 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 7.2em;
+            letter-spacing: .15em;
+            text-indent: .15em; }
+          /* line 815, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .map-container .caption .country {
+            /*font-size: 18px;*/
+            position: relative;
+            color: #000;
+            margin: 0 0 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 4em;
+            letter-spacing: .5em;
+            text-indent: .5em;
+            line-height: 1.4;
+            margin: .5em 0;
+            padding: 0 1em; }
+            /* line 830, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .map-container .caption .country:after {
+              position: absolute;
+              content: '';
+              height: 3px;
+              left: 0;
+              right: 0;
+              top: 50%;
+              width: 80%;
+              margin: 0 auto;
+              background: #000; }
+            /* line 841, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .map-container .caption .country span {
+              position: relative;
+              padding: 0 30px;
+              background: #fff;
+              z-index: 1; }
+          /* line 848, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .map-container .caption .subtitle {
+            font: "Proxima Nova Regular", sans-serif;
+            color: #949595;
+            text-transform: uppercase;
+            font-weight: 300;
+            font-size: 3.5em;
+            letter-spacing: .1em;
+            text-indent: .1em; }
+      /* line 859, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .map #map {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+    @media (max-width: 767px) {
+      /* line 866, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .preview {
+        width: 100%; } }
+    /* line 871, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .size {
+      font: 30px "Proxima Nova Semibold", sans-serif;
+      color: #fff;
+      height: 50px;
+      background: #303030;
+      margin: -50px 0 0;
+      line-height: 50px;
+      text-transform: uppercase; }
+      @media (max-width: 1199px) {
+        /* line 871, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .size {
+          margin: 30px 0 -60px; } }
+      @media (max-width: 991px) {
+        /* line 871, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .size {
+          font-size: 24px; } }
+      @media (max-width: 575px) {
+        /* line 871, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .size {
+          font-size: 22px;
+          margin-bottom: -30px; } }
+    /* line 890, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .footer {
+      left: 15px;
+      right: 15px;
+      bottom: 45px;
+      margin: 60px 0 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      -webkit-align-items: center;
+      align-items: center;
+      justify-content: space-between; }
+      @media (min-width: 1200px) {
+        /* line 890, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .footer {
+          position: absolute;
+          margin: 0; } }
+      @media (max-width: 575px) {
+        /* line 890, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .footer {
+          margin: 30px 0 0; } }
+      /* line 908, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .footer.bottom {
+        bottom: 5%; }
+      /* line 911, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .footer ul {
+        margin: 0; }
+        /* line 913, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .footer ul li {
+          list-style: none;
+          display: inline-block;
+          margin-right: 30px; }
+          /* line 917, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section .footer ul li a {
+            font-size: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            -webkit-transition: color 0.15s ease-in-out;
+            -moz-transition: color 0.15s ease-in-out;
+            -ms-transition: color 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out; }
+            /* line 922, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .footer ul li a:hover {
+              color: #fdb116;
+              text-decoration: none; }
+            /* line 926, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+            main section .footer ul li a span {
+              color: #fdb116; }
+      /* line 932, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .footer .iskra {
+        font-size: 10px;
+        color: #fff;
+        text-transform: uppercase;
+        opacity: 0.54;
+        transition: 0.35s; }
+        /* line 938, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .footer .iskra:hover {
+          opacity: 1;
+          color: #fdb116;
+          text-decoration: none; }
+        /* line 943, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section .footer .iskra span {
+          color: #fdb116; }
+    /* line 950, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section[data-theme='dark'] .pagetitle {
+      color: #fff; }
+      @media (max-width: 1199px) {
+        /* line 950, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section[data-theme='dark'] .pagetitle {
+          margin-top: -30px; } }
+    @media (max-width: 1199px) {
+      /* line 949, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section[data-theme='dark'] {
+        padding: 130px 0 60px; } }
+    @media (max-width: 575px) {
+      /* line 949, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section[data-theme='dark'] {
+        padding-bottom: 30px; } }
+    /* line 963, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section[data-theme='light'] {
+      background: #fff; }
+      @media (max-width: 1199px) {
+        /* line 963, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section[data-theme='light'] {
+          padding: 60px 0; } }
+      @media (max-width: 575px) {
+        /* line 963, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section[data-theme='light'] {
+          padding: 30px 0; } }
+      /* line 971, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section[data-theme='light'] .pagetitle {
+        color: #000;
+        margin-top: -75px; }
+        @media (max-width: 1199px) {
+          /* line 971, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+          main section[data-theme='light'] .pagetitle {
+            margin-top: -30px; } }
+      /* line 979, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section[data-theme='light'] .footer ul li a {
+        color: #000; }
+        /* line 981, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section[data-theme='light'] .footer ul li a:hover {
+          color: #fdb116; }
+      /* line 985, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section[data-theme='light'] .footer .iskra {
+        color: #000; }
+        /* line 987, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+        main section[data-theme='light'] .footer .iskra:hover {
+          color: #fdb116; }
+
+/* line 998, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+.block2 .col,
+.block3 .col {
+  height: 70%; }
+
+/* line 1003, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+.basket {
+  padding-top: 125px !important; }
+  /* line 1005, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket .align-items-center {
+    box-sizing: border-box;
+    padding: 0 5%; }
+  /* line 1009, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket [type="submit"][value="cart/change"] {
+    display: none; }
+  /* line 1012, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket input,
+  .basket textarea,
+  .basket select {
+    font: 14px/34px "Proxima Nova Regular", sans-serif;
+    transition: 0.35s;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0);
+    color: black;
+    float: left;
+    width: 100%;
+    margin: 0 0 10px 0;
+    border: 1px solid #fdb116; }
+    /* line 1024, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket input::-webkit-input-placeholder,
+    .basket textarea::-webkit-input-placeholder,
+    .basket select::-webkit-input-placeholder {
+      color: #8c8c8c;
+      transition: 0.4s; }
+    /* line 1028, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket input::-moz-placeholder,
+    .basket textarea::-moz-placeholder,
+    .basket select::-moz-placeholder {
+      color: #8c8c8c;
+      transition: 0.4s; }
+    /* line 1032, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket input:-moz-placeholder,
+    .basket textarea:-moz-placeholder,
+    .basket select:-moz-placeholder {
+      color: #8c8c8c;
+      transition: 0.4s; }
+    /* line 1036, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket input:-ms-input-placeholder,
+    .basket textarea:-ms-input-placeholder,
+    .basket select:-ms-input-placeholder {
+      color: #8c8c8c;
+      transition: 0.4s; }
+    /* line 1040, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket input:hover, .basket input:focus,
+    .basket textarea:hover,
+    .basket textarea:focus,
+    .basket select:hover,
+    .basket select:focus {
+      border-color: #8c8c8c;
+      box-shadow: 0px 2px 0px #8c8c8c; }
+      /* line 1044, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket input:hover::-webkit-input-placeholder, .basket input:focus::-webkit-input-placeholder,
+      .basket textarea:hover::-webkit-input-placeholder,
+      .basket textarea:focus::-webkit-input-placeholder,
+      .basket select:hover::-webkit-input-placeholder,
+      .basket select:focus::-webkit-input-placeholder {
+        color: #8c8c8c;
+        font-size: 12px; }
+      /* line 1048, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket input:hover::-moz-placeholder, .basket input:focus::-moz-placeholder,
+      .basket textarea:hover::-moz-placeholder,
+      .basket textarea:focus::-moz-placeholder,
+      .basket select:hover::-moz-placeholder,
+      .basket select:focus::-moz-placeholder {
+        color: #8c8c8c;
+        font-size: 12px; }
+      /* line 1052, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket input:hover:-moz-placeholder, .basket input:focus:-moz-placeholder,
+      .basket textarea:hover:-moz-placeholder,
+      .basket textarea:focus:-moz-placeholder,
+      .basket select:hover:-moz-placeholder,
+      .basket select:focus:-moz-placeholder {
+        color: #8c8c8c;
+        font-size: 12px; }
+      /* line 1056, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket input:hover:-ms-input-placeholder, .basket input:focus:-ms-input-placeholder,
+      .basket textarea:hover:-ms-input-placeholder,
+      .basket textarea:focus:-ms-input-placeholder,
+      .basket select:hover:-ms-input-placeholder,
+      .basket select:focus:-ms-input-placeholder {
+        color: #8c8c8c;
+        font-size: 12px; }
+  /* line 1063, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket input,
+  .basket select {
+    height: 35px; }
+  /* line 1068, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-align-items: start;
+    align-items: start;
+    justify-content: center; }
+  /* line 1077, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket table tbody tr:nth-of-type(odd) {
+    background: none; }
+  /* line 1080, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket table tr.header {
+    border-top: 0px; }
+    /* line 1082, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr.header th {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-top: 0px;
+      border-right: 1px solid #fdb116;
+      border-bottom: 1px solid #fdb116;
+      padding: 5px; }
+      /* line 1092, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket table tr.header th:last-child {
+        border-right: none; }
+  /* line 1098, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket table tr:last-child {
+    padding-top: 18px; }
+  /* line 1101, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket table tr td {
+    font-size: 14px;
+    text-align: center !important;
+    color: black;
+    border-right: 1px solid #fdb116;
+    border-bottom: 1px solid #fdb116;
+    padding: 19px 5px;
+    box-sizing: border-box; }
+    /* line 1109, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td:last-child {
+      border-right: none; }
+    /* line 1112, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td.title {
+      font-size: 14px; }
+      /* line 1114, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket table tr td.title:before, .basket table tr td.title:after {
+        display: none; }
+    /* line 1120, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td.remove button {
+      background: url(../images/del.png);
+      width: 100%;
+      padding: 10px 45px;
+      display: block;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      cursor: pointer; }
+      /* line 1129, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket table tr td.remove button:hover {
+        -webkit-filter: brightness(0.1);
+        filter: brightness(0.1); }
+    /* line 1135, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td:nth-child(1) {
+      width: 62%; }
+    /* line 1138, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td:nth-child(2) {
+      width: 9%; }
+    /* line 1141, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td:nth-child(3) {
+      width: 20%; }
+    /* line 1144, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket table tr td:nth-child(4) {
+      width: 9%; }
+  /* line 1148, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket table tr th {
+    padding: 5px;
+    text-align: right; }
+  /* line 1154, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket .quantity {
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 2%; }
+    /* line 1159, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket .quantity input {
+      width: 100%;
+      padding: 0;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: auto;
+      display: inline-block; }
+      /* line 1167, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket .quantity input:focus {
+        outline: 0; }
+  /* line 1173, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket .info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-align-items: start;
+    align-items: start;
+    justify-content: space-between; }
+    /* line 1181, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket .info .form-group {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      -webkit-align-items: start;
+      align-items: start;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0; }
+      /* line 1190, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket .info .form-group2, .basket .info .form-group3 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        -webkit-align-items: start;
+        align-items: start;
+        justify-content: space-between; }
+      /* line 1200, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket .info .form-group2 input {
+        width: 49%; }
+      /* line 1205, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket .info .form-group3 input {
+        width: 32%; }
+    /* line 1210, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket .info .info1,
+    .basket .info .info2 {
+      width: 49%;
+      padding: 0 0 18px 0; }
+  /* line 1218, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket #payments,
+  .basket #deliveries {
+    width: 49%;
+    padding: 0 0 18px 0;
+    display: flex;
+    flex-direction: column; }
+    /* line 1225, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments .form-group label,
+    .basket #deliveries .form-group label {
+      color: black; }
+    /* line 1229, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments div.checkbox,
+    .basket #deliveries div.checkbox {
+      position: relative;
+      width: 100%;
+      min-height: 32px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      -webkit-align-items: center;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 0 5px 0; }
+      /* line 1240, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      .basket #payments div.checkbox div,
+      .basket #deliveries div.checkbox div {
+        width: 100%; }
+    /* line 1244, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input,
+    .basket #deliveries input {
+      width: 27px;
+      height: 27px;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      z-index: -1;
+      opacity: 0; }
+    /* line 1253, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input + label,
+    .basket #deliveries input + label {
+      position: relative;
+      padding: 0 0 0 35px;
+      cursor: pointer; }
+    /* line 1258, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input + label:before,
+    .basket #deliveries input + label:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      width: 27px;
+      height: 27px;
+      border: 1px solid #fdb116;
+      border-radius: 50%;
+      background: #FFF; }
+    /* line 1271, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input + label:after,
+    .basket #deliveries input + label:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 5px;
+      bottom: 0;
+      margin: auto;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fdb116;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: .2s; }
+    /* line 1286, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input:checked + label:after,
+    .basket #deliveries input:checked + label:after {
+      opacity: 1; }
+    /* line 1289, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input:checked + label:before,
+    .basket #deliveries input:checked + label:before {
+      border-color: #f9593a; }
+    /* line 1292, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket #payments input:focus + label:before,
+    .basket #deliveries input:focus + label:before {
+      box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.7); }
+  /* line 1298, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket #deliveries label p.small {
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0; }
+  /* line 1307, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .basket .well {
+    padding: 18px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center; }
+    /* line 1316, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .basket .well h3,
+    .basket .well button {
+      margin: 0 9px; }
+
+/* line 1324, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+.menu-main {
+  display: none;
+  height: auto;
+  width: 0;
+  top: 0;
+  right: 0;
+  padding: 118px 30px 27px 30px;
+  background: rgba(255, 255, 255, 0.89);
   position: absolute;
-  font-size: 13px;
-  color: #fff;
-  top: 50%;
-  left: -35px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  -webkit-transition: color 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out;
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-@media (max-width: 1199px) {
-  main section .pagetitle {
-    display: none;
-  }
-}
-@media (min-width: 1199px) {
-  main section .caption,
-  main section .content {
-    padding-left: 60px;
-  }
-}
-main section .caption-title,
-main section .content-title {
-  font: 57px 'Proxima Nova Bold', sans-serif;
-  color: #fff;
-  line-height: 55px;
-  padding: 30px 15px 30px 30px;
-  border-left: 3px solid #fdb116;
-}
-@media (max-width: 767px) {
-  main section .caption-title,
-  main section .content-title {
-    font-size: 50px;
-  }
-}
-@media (max-width: 575px) {
-  main section .caption-title,
-  main section .content-title {
-    font-size: 40px;
-    line-height: 45px;
-    padding: 15px;
-  }
-}
-main section .caption-body,
-main section .content-body {
-  font-size: 14px;
-  color: #fff;
-  line-height: 22px;
-  padding-left: 30px;
-}
-@media (max-width: 575px) {
-  main section .caption-body,
-  main section .content-body {
-    padding-left: 15px;
-  }
-}
-main section .caption-body .btn,
-main section .content-body .btn {
-  margin: 5px 0 0;
-}
-main section .content {
-  margin: 0 0 30px;
-}
-@media (min-width: 992px) {
-  main section .content.offset-right {
-    padding-right: 30px;
-  }
-}
-main section .content-title {
-  font: 57px 'Proxima Nova Bold', sans-serif;
-  color: #000;
-  line-height: 55px;
-  padding: 15px 15px 15px 30px;
-  border-left: 3px solid #fdb116;
-  margin: 0 0 15px;
-}
-@media (max-width: 767px) {
-  main section .content-title {
-    font-size: 50px;
-  }
-}
-@media (max-width: 575px) {
-  main section .content-title {
-    font-size: 40px;
-    line-height: 45px;
-    padding: 15px;
-  }
-}
-main section .content p {
-  line-height: 24px;
-}
-main section .content em {
-  font-family: 'Proxima Nova Italic', sans-serif;
-  font-style: normal;
-  line-height: 24px;
-  color: rgba(0, 0, 0, 0.7);
-}
-main section .content .nav-item.yellow .nav-link.active {
-  background: #fdb116;
-}
-main section .content .nav-item.red .nav-link.active {
-  background: #f9593a;
-}
-main section .content .nav-item.green .nav-link.active {
-  background: #418215;
-}
-main section .content .nav-link {
-  font: 14px 'Proxima Nova Semibold', sans-serif;
-  color: #000;
-  border: 0;
-  height: 100%;
-  border-radius: 0;
-  padding: 20px 10px;
-  white-space: nowrap;
-  text-transform: uppercase;
-  background: #f2f5f7;
-}
-@media (max-width: 575px) {
-  main section .content .nav-link {
-    font-size: 13px;
-  }
-}
-main section .content .nav-link.active {
-  color: #fff;
-}
-main section .content .tab-content {
-  overflow: hidden;
-  height: 390px;
-}
-main section .content .tab-pane {
-  padding: 30px 30px 15px;
-  height: 100%;
-  overflow: auto;
-}
-main section .content .tab-pane::-webkit-scrollbar {
-  width: 4px;
-}
-main section .content .tab-pane::-webkit-scrollbar-thumb {
-  background: #d7d7d7;
-  border-radius: 5px;
-}
-main section .content .tab-pane::-webkit-scrollbar-track-piece {
-  background: #707070;
-}
-main section .content .tab-pane.yellow {
-  background: #fdb116;
-}
-main section .content .tab-pane.yellow .form-control,
-main section .content .tab-pane.yellow .form-control:focus {
-  border-color: #f2a915;
-}
-main section .content .tab-pane.red {
-  background: #f9593a;
-}
-main section .content .tab-pane.green {
-  background: #418215;
-}
-main section .content .tab-pane .alert {
-  font-size: 14px;
-  color: #fff;
-  line-height: 20px;
-  border: 0;
-  padding: 20px;
-  overflow: hidden;
-  border-radius: 20px;
-  -webkit-transition: opacity 0.15s ease-in-out;
-  transition: opacity 0.15s ease-in-out;
-}
-main section .content .tab-pane .alert.fade-in-out {
-  display: none;
-  opacity: 0;
-}
-main section .content .tab-pane .alert-warning {
-  background: #fbbf43;
-}
-main section .content .tab-pane .alert-danger {
-  background: #f87860;
-}
-main section .content .tab-pane .params {
-  margin: 0 -5px;
-}
-main section .content .tab-pane .params li {
-  list-style: none;
-  padding: 0 5px;
-  display: inline-block;
-}
-main section .content .tab-pane .params li .radio {
-  width: 100%;
-}
-main section .content .tab-pane .radio-body {
-  font-size: 12px;
-  color: #fff;
-  height: 40px;
-  cursor: pointer;
-  padding: 0 15px;
-  line-height: 42px;
-  background: #376b14;
-}
-main section .content .tab-pane .radio input {
-  display: none;
-}
-main section .content .tab-pane .radio input:checked + .radio-body {
-  background: #294913;
-}
-main section .content .config .show-style {
-  width: 100%;
-  margin: 0 0 20px;
-  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-}
-main section .content .config .action {
-  position: relative;
-  display: table;
-  width: 100%;
-  height: 50px;
-  background: #464646;
-}
-main section .content .config .action button {
-  font: 14px 'Proxima Nova Semibold', sans-serif;
-  color: #fff;
-  display: table-cell;
-  text-align: center;
-  width: 100%;
-  height: 50px;
-  border: 0;
-  text-transform: uppercase;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  background: #464646;
-}
-main section .content .config .action .price {
-  font: 16px 'Proxima Nova Semibold', sans-serif;
-  position: relative;
-  display: table-cell;
-  color: #fff;
-  width: 25%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-  height: 50px;
-  padding: 0 30px;
-  line-height: 50px;
-  background: #636363;
-}
-@media (max-width: 575px) {
-  main section .content .config .action {
+  flex-direction: column;
+  z-index: 9;
+  transition: 0.4s; }
+  /* line 1336, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .menu-main.active {
+    width: 100%; }
+    /* line 1338, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .menu-main.active li {
+      font: 23px/26px "Proxima Nova Bold", sans-serif; }
+  /* line 1342, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .menu-main li {
     display: block;
+    clear: both;
+    width: 100%;
+    margin: 0 0 9px 0;
     height: auto;
-  }
-  main section .content .config .action button,
-  main section .content .config .action .price {
-    display: block;
-    width: 100%;
-  }
-}
-main section .map {
-  height: 500px;
-  border: 20px solid #fff;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-}
-@media (max-width: 991px) {
+    padding: 0;
+    text-align: right;
+    font: 0px/26px "Proxima Nova Bold", sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.4s; }
+    /* line 1354, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    .menu-main li a {
+      width: 100%;
+      text-align: right;
+      padding: 8px 0; }
+
+@media (max-width: 992px) {
+  /* line 1365, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  main section .w {
+    display: inline-block;
+    margin: 0 auto;
+    transform-origin: 50% 1% 0px;
+    top: 0;
+    transform: translate(-50%, 0%) scale(0.23); }
+    /* line 1371, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .w.w1 {
+      transform: translate(-50%, 0) scale(0.2); }
+      /* line 1373, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w1.horizontal {
+        transform: translate(-50%, 0) scale(0.23); }
+    /* line 1377, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .w.w2 {
+      transform: translate(-50%, 0) scale(0.21); }
+      /* line 1379, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w2.horizontal {
+        transform: translate(-50%, 0) scale(0.24); }
+    /* line 1383, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+    main section .w.w3 {
+      transform: translate(-50%, 0) scale(0.22); }
+      /* line 1385, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+      main section .w.w3.horizontal {
+        transform: translate(-50%, 0) scale(0.25); }
+  /* line 1390, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
   main section .map {
-    margin: 0;
-  }
-}
-@media (max-width: 575px) {
-  main section .map {
-    height: 350px;
-  }
-}
-main section .map-container {
-  opacity: 0;
-  position: relative;
-  height: 100%;
-  top: 0;
-  -webkit-transition: top 0.8s ease-in-out;
-  transition: top 0.8s ease-in-out;
-}
-@media (min-width: 1200px) {
-  main section .map-container {
-    height: 100%;
-  }
-}
-@media (max-width: 1199px) {
-  main section .map-container {
-    top: 0 !important;
-  }
-}
-main section .map-container .draggable {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right: 0;
-  cursor: pointer;
-  bottom: 0;
-  z-index: 3;
-}
-main section .map-container.loading {
-  opacity: 1;
-}
-main section .map-container .zoom {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 4;
-}
-main section .map-container .zoom-in,
-main section .map-container .zoom-out {
-  height: 22px;
-  width: 22px;
-  cursor: pointer;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-  background: #fff;
-  background: #fff url('../images/icons/icon-minus.svg') no-repeat center;
-  background-size: 62.8%;
-}
-main section .map-container .zoom-in.disabled,
-main section .map-container .zoom-out.disabled {
-  opacity: .7;
-  cursor: default;
-}
-main section .map-container .zoom-in {
-  margin: 0 0 3px;
-  background-image: url('../images/icons/icon-plus.svg');
-  background-size: 50%;
-}
-main section .map-container .caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 70px 15px 10px;
-  word-break: break-word;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(50%, #fff), color-stop(0, #fff));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 50%, #fff 0);
-}
-main section .map-container .caption .city {
-  font: 36px 'Proxima Nova Bold', sans-serif;
-  color: #000;
-  margin: 0 0 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-main section .map-container .caption .country {
-  font-size: 18px;
-  position: relative;
-  color: #000;
-  margin: 0 0 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-}
-main section .map-container .caption .country:after {
-  position: absolute;
-  content: '';
-  height: 3px;
-  left: 0;
-  right: 0;
-  top: 50%;
-  width: 80%;
-  margin: 0 auto;
-  background: #000;
-}
-main section .map-container .caption .country span {
-  position: relative;
-  padding: 0 30px;
-  background: #fff;
-  z-index: 1;
-}
-main section .map-container .caption .subtitle {
-  font: 14px 'Proxima Nova Regular', sans-serif;
-  color: #949595;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-main section .map #map {
-  height: 100%;
-}
-@media (max-width: 767px) {
-  main section .preview {
-    width: 100%;
-  }
-}
-main section .size {
-  font: 30px 'Proxima Nova Semibold', sans-serif;
-  color: #fff;
-  height: 50px;
-  background: #303030;
-  margin: -50px 0 0;
-  line-height: 50px;
-  text-transform: uppercase;
-}
-@media (max-width: 1199px) {
-  main section .size {
-    margin: 30px 0 -60px;
-  }
-}
-@media (max-width: 991px) {
-  main section .size {
-    font-size: 24px;
-  }
-}
-@media (max-width: 575px) {
-  main section .size {
-    font-size: 22px;
-    margin-bottom: -30px;
-  }
-}
-main section .footer {
-  left: 15px;
-  right: 15px;
-  bottom: 45px;
-  margin: 60px 0 0;
-}
-@media (min-width: 1200px) {
-  main section .footer {
-    position: absolute;
-    margin: 0;
-  }
-}
-@media (max-width: 575px) {
-  main section .footer {
-    margin: 30px 0 0;
-  }
-}
-main section .footer.bottom {
-  bottom: 75px;
-}
-main section .footer ul {
-  margin: 0;
-}
-main section .footer ul li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 30px;
-}
-main section .footer ul li a {
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  -webkit-transition: color 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out;
-}
-main section .footer ul li a:hover {
-  color: #fdb116;
-  text-decoration: none;
-}
-main section .footer ul li a span {
-  color: #fdb116;
-}
-main section[data-theme='dark'] .pagetitle {
-  color: #fff;
-}
-@media (max-width: 1199px) {
-  main section[data-theme='dark'] .pagetitle {
-    margin-top: -30px;
-  }
-}
-@media (max-width: 1199px) {
-  main section[data-theme='dark'] {
-    padding: 130px 0 60px;
-  }
-}
-@media (max-width: 575px) {
-  main section[data-theme='dark'] {
-    padding-bottom: 30px;
-  }
-}
-main section[data-theme='light'] {
-  background: #fff;
-}
-@media (max-width: 1199px) {
-  main section[data-theme='light'] {
-    padding: 60px 0;
-  }
-}
-@media (max-width: 575px) {
-  main section[data-theme='light'] {
-    padding: 30px 0;
-  }
-}
-main section[data-theme='light'] .pagetitle {
-  color: #000;
-  margin-top: -75px;
-}
-@media (max-width: 1199px) {
-  main section[data-theme='light'] .pagetitle {
-    margin-top: -30px;
-  }
-}
-main section[data-theme='light'] .footer ul li a {
-  color: #000;
-}
-main section[data-theme='light'] .footer ul li a:hover {
-  color: #fdb116;
-}
+    /*
+                .leaflet-control-container {
+                    transform: scale(1.5);
+                }
+                */ }
+  /* line 1398, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  main section .map-container .caption {
+    padding: 70px 15px 89px;
+    /*
+                    .city {
+                        font-size: 4.2em;
+                    }
+                    .country {
+                        font-size: 2em;
+                    }
+                    .subtitle {
+                        font-size: 1.5em;
+                    }
+                    */ }
+  /* line 1415, ../../Users/stvol/OneDrive/Документы/eqFTP Projects/utechno.ru/mapwall.ru/public_html/public/assets/html/css/style.scss */
+  .map-col {
+    height: 89vh;
+    display: flex; } }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,36 +1,38 @@
-$(document).ready(function(){
-    $('form.config').on('submit', function(e) {
+$(document).ready(function () {
+    $('form.config').on('submit', function (e) {
         e.preventDefault();
     })
 
     /*=================== TEXT on MAP =======================*/
-    $('#map_city').keyup(function() {
-        $('.city').text(this.value);        
-    });
-    $('#map_city').change(function(){
+    $('#map_city').keyup(function () {
         $('.city').text(this.value);
     });
-    $('#map_country').keyup(function() {
+    $('#map_city').change(function () {
+        $('.city').text(this.value);
+    });
+    $('#map_country').keyup(function () {
         $('.country span').text(this.value);
     });
-    $('#map_country').change(function(){
+    $('#map_country').change(function () {
         $('.country span').text(this.value);
     });
-    $('#map_subtitle').keyup(function() {
+    $('#map_subtitle').keyup(function () {
         $('.subtitle').text(this.value);
     });
-    $('#map_subtitle').change(function(){
+    $('#map_subtitle').change(function () {
         $('.subtitle').text(this.value);
     });
 
 
     /*=====================   SEARCH   =======================*/
-    $('#search').change(function(){
+    $('#search').change(function () {
         var search = this.value;
-        $.post('search', {search: $.trim(search)}, res => {
+        $.post('search', {
+            search: $.trim(search)
+        }, res => {
             var zoom = map.getZoom();
             var style = $('.map_style:checked').val();
-            if(zoom < 7) zoom = 7;
+            if (zoom < 12) zoom = 12;
             mapInit(style, res.lat, res.lng, zoom);
 
             $('.city').text(res.title);
@@ -46,7 +48,7 @@ $(document).ready(function(){
 
 
     /*===================== MAP INIT =========================*/
-    const mapMinZoom = 2;
+    const mapMinZoom = 4;
     const mapMaxZoom = 20;
 
     var map = L.map('map', {
@@ -63,35 +65,62 @@ $(document).ready(function(){
 
     var style = $('.map_style:checked').val();
     mapInit(style, 0, 0, 0);
-    function mapInit(style, lat, lng, zoom){
+    map.scrollWheelZoom.disable()
+
+    function mapInit(style, lat, lng, zoom) {
         $('.leaflet-tile-pane').empty();
-        map.eachLayer(function(layer){
+        map.eachLayer(function (layer) {
             map.removeLayer(layer);
         });
 
-        var layer = 'https://tiles.mapiful.com/'+style+'/{z}/{x}/{y}.png';
+        var layer = 'https://tiles.mapiful.com/' + style + '/{z}/{x}/{y}.png';
         L.tileLayer(layer, {
             minZoom: mapMinZoom,
             maxZoom: mapMaxZoom
-        }).addTo( map );
+        }).addTo(map);
 
-        if(lat != undefined && lng != undefined && zoom !=undefined) map.setView([lat, lng], zoom);
+        if (lat != undefined && lng != undefined && zoom != undefined) map.setView([lat, lng], zoom);
     }
 
-    $('#add_cart').on('click', function(){
+
+    /*
+    $(".nav-item.s2").click(function () {
+
+        function mapInit(style, lat, lng, zoom) {
+            $('.leaflet-tile-pane').empty();
+            map.eachLayer(function (layer) {
+                map.removeLayer(layer);
+            });
+
+            var layer = 'https://tiles.mapiful.com/' + style + '/{z}/{x}/{y}.png';
+            L.tileLayer(layer, {
+                minZoom: mapMinZoom,
+                maxZoom: mapMaxZoom
+            }).addTo(map);
+
+            if (lat != undefined && lng != undefined && zoom != undefined) map.setView([lat, lng], zoom);
+        }
+
+    });
+    */
+
+    $('#add_cart').on('click', function () {
         var ajax_count = 0;
         var img_count = $('.leaflet-tile-container img').length;
         var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
         localStorage.setItem('hash', hash);
-        $('.leaflet-tile-container img').each(function(i){
+        $('.leaflet-tile-container img').each(function (i) {
             $.ajax({
-                type:  'post',
+                type: 'post',
                 async: false,
-                url:   '/parse',
-                data:  {image: this.src, hash: hash},
-                success: function(res) {
-                    if(res =='done') ajax_count++;
-                    if(ajax_count == img_count) buildImg(map);
+                url: '/parse',
+                data: {
+                    image: this.src,
+                    hash: hash
+                },
+                success: function (res) {
+                    if (res == 'done') ajax_count++;
+                    if (ajax_count == img_count) buildImg(map);
                 }
             })
         });
@@ -99,8 +128,8 @@ $(document).ready(function(){
 
 
     /*===================== BUILD IMG =========================*/
-    function buildImg(map){
-        leafletImage(map, function(err, canvas) {
+    function buildImg(map) {
+        leafletImage(map, function (err, canvas) {
             try {
                 console.log(canvas);
                 var img = document.createElement('img');
@@ -115,13 +144,16 @@ $(document).ready(function(){
 
                 var labels = document.getElementById('labels');
                 labels.style.position = 'relative';
-            } catch ( err ) {
+            } catch (err) {
                 console.error('buildImg(map) error: ', err);
             }
             domtoimage.toPng(labels)
                 .then(function (labels_src) {
                     labels.style.position = 'absolute';
-                    $.post('save', {map_src: map_src, labels_src: labels_src}, res => {
+                    $.post('save', {
+                        map_src: map_src,
+                        labels_src: labels_src
+                    }, res => {
                         console.log('save: ', res);
                     });
                 })
@@ -132,8 +164,7 @@ $(document).ready(function(){
     }
 
     /*===================== CHANGE STYLE =========================*/
-    $('.map_style').on('click', function(){
+    $('.map_style').on('click', function () {
         mapInit(this.value);
     })
-})
-
+});

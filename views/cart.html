@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" href="/assets/css/leaflet.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/leaflet.js"></script>
+    <script src="/assets/js/dom-to-image.min.js"></script>
+    <script src='/assets/js/leaflet-image.js'></script>
+
+    <link href="/assets/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/html/css/fonts.css" rel="stylesheet">
+    <link href="/assets/html/css/theme.css" rel="stylesheet">
+
+    <link href="/assets/html/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper basket-page">
+        <header data-theme="light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h2 class="title">
+                            <a class="logo" href="/">
+                                <div>
+                                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 412.7 115.5" style="enable-background:new 0 0 412.7 115.5;" xml:space="preserve">
+                                    <style type="text/css">
+                                        .st0{fill:#fff0;stroke:#fff;stroke-width:5;stroke-miterlimit:10;}
+                                        .st1{fill:#fff;stroke:#fff;stroke-width:5;stroke-miterlimit:10;}
+                                    </style>
+                                    <g>
+                                        <polygon class="st0" points="56.2,2.2 101.8,113 156.8,113 110.5,2.2 	"/>
+                                        <polygon class="st0" points="155.9,2.2 201.5,113 257.5,113 211.2,2.2 	"/>
+                                        <polygon class="st0" points="255.9,2.2 301.5,113 357.5,113 311.2,2.2 	"/>
+                                        <polygon class="st1" points="208.5,2.2 159.5,113 104,113 153.7,2.2 	"/>
+                                        <polygon class="st1" points="308.5,2.2 259.5,113 204,113 253.8,2.2 	"/>
+                                        <polygon class="st1" points="408.5,2.2 359.5,113 304,113 353.8,2.2 	"/>
+                                        <polygon class="st1" points="108.5,2.2 59.5,113 4,113 53.7,2.2 	"/>
+                                    </g>
+                                    </svg>
+                                </div>
+                                <div>Mapwall</div>
+                            </a>
+                        </h2>
+                    </div>
+
+                    <div class="col-6 text-right">
+                        <div class="cart">
+                            <span class="cart-total">1</span>
+                            <img src="/assets/html/images/icons/icon-cart.svg" class="svg" alt="...">
+                        </div>
+
+                        <button type="button" class="menu">
+                        <img src="/assets/html/images/icons/icon-menu.svg" class="svg" alt="...">
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <ul class="menu-main">
+                <div class="container">
+                    <li>Главная</li>
+                    <li>Конструктор</li>
+                    <li>О нас</li>
+                    <li>Галерея</li>
+                </div>
+            </ul>
+        </header>
+        <main>
+            <div class="transition">
+                <section data-theme="light" class="block3 basket" id="basket">
+                    <div class="container h-auto">
+                        <div class="pagetitle">Корзина</div>
+                        <div class="align-items-center h-auto">
+                            <div class="table-responsive">
+                                <table class="table table-striped" border="0" cellspacing="0" cellpadding="0">
+                                    <tr class="header">
+                                        <th class="title">Наименование</th>
+                                        <th class="count">Кол-во</th>
+                                        <th class="price">Цена</th>
+                                        <th class="remove">Удалить</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Карта Санкт-Петербург (59.9342802 / 30.3350986) 50см * 70см</td>
+                                        <td class="count quantity">
+                                            <input type="number" name="count" value="1" class="input-sm form-control">
+                                        </td>
+                                        <td class="price">
+                                            <span>2 900</span> руб.
+                                        </td>
+                                        <td class="remove">
+                                            <button class="btn btn-default" type="submit" name="" value="cart/remove">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="total" colspan="2">Итого:</th>
+                                        <th class="total_count">
+                                            <span class="ms2_total_count">1</span> шт.
+                                        </th>
+                                        <th class="total_cost">
+                                            <span class="ms2_total_cost">2 900</span> руб.
+                                        </th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <form class="form-horizontal ms2_form" id="msOrder" method="post">
+                                <div class="info">
+                                    <div class="info1">
+                                        <h4>Данные получателя:</h4>
+                                        <div class="form-group">
+                                            <input type="text" id="receiver" placeholder="Получатель" name="receiver" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group2">
+                                            <input type="text" id="email" placeholder="Email" name="email" value="" class="form-control">
+                                            <input type="text" id="phone" placeholder="Телефон" name="phone" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="info2">
+                                        <h4>Адрес доставки:</h4>
+                                        <div class="form-group2">
+                                            <input type="text" id="city" placeholder="Город" name="city" value="" class="form-control">
+                                            <input type="text" id="index" placeholder="Индекс" name="index" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group3">
+                                            <input type="text" id="street" placeholder="Улица" name="street" value="" class="form-control">
+                                            <input type="text" id="building" placeholder="Дом" name="building" value="" class="form-control">
+                                            <input type="text" id="room" placeholder="Квартира" name="room" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="payments">
+                                    <h4>Способы оплаты:</h4>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <input type="radio" name="payment" value="4" id="payment_4" checked>
+                                            <label for="payment_4" class="payment input-parent">Банковские карты</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="radio" name="payment" value="8" id="payment_8">
+                                            <label for="payment_8" class="payment input-parent">Яндекс.Деньги</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="deliveries">
+                                    <h4>Варианты доставки:</h4>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <input type="radio" name="delivery" value="1" id="delivery_1" data-payments="[4,8]" checked>
+                                            <label for="delivery_1" class="delivery input-parent">
+                                                    Доставка до дома <p class="small">оплачивается курьеру либо дополнительным счетом</p>
+                                                </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="radio" name="delivery" value="2" id="delivery_2" data-payments="[4,8]">
+                                            <label for="delivery_2" class="delivery input-parent">
+                                                    Самовывоз <p class="small">необходимо уточнить у менеджера</p>
+                                                </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="well">
+                                    <h3>
+                                        Итого, с доставкой:
+                                        <span id="ms2_order_cost">2 900</span> руб.
+                                    </h3>
+                                    <button type="submit" name="" value="order/submit" class="btn btn-default btn-primary">Сделать заказ!</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="footer">
+                            <ul>
+                                <li><a href="/">create <span>iskra</span></a></li>
+                                <li><a href="/">Вкoнтакте</a></li>
+                                <li><a href="/">facebook</a></li>
+                                <li><a href="/">instagram</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="/assets/html/js/jquery.min.js"></script>
+    <script src="/assets/html/js/bootstrap.min.js"></script>
+    <script src="/assets/html/js/maskedinput.js"></script>
+    <script src="/assets/html/js/lib/map.js"></script>
+    <script src="/assets/html/js/lib/svg.js"></script>
+    <script src="/assets/html/js/index.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/html/js/main.js"></script>
+</body>
+
+</html>
