@@ -165,6 +165,8 @@
                         });
                     }
                 };
+                im.src = url;
+
                 var src = url.substr(26);  // Обрезаем https://tiles.mapiful.com/
                 var arr = src.split('?');  // Вырезаем cache=1520651447810
                 var hash = localStorage.getItem('hash');

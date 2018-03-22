@@ -93,12 +93,12 @@
                                         <th class="remove">Удалить</th>
                                     </tr>
                                     <tr>
-                                        <td class="title">Карта Санкт-Петербург (59.9342802 / 30.3350986) 50см * 70см</td>
+                                        <td class="title">Карта {{ city }} {{ subtitle }} {{ size }}</td>
                                         <td class="count quantity">
                                             <input type="number" name="count" value="1" class="input-sm form-control">
                                         </td>
                                         <td class="price">
-                                            <span>2 900</span> руб.
+                                            <span>{{ price }}</span> руб.
                                         </td>
                                         <td class="remove">
                                             <button class="btn btn-default" type="submit" name="" value="cart/remove">
@@ -112,7 +112,7 @@
                                             <span class="ms2_total_count">1</span> шт.
                                         </th>
                                         <th class="total_cost">
-                                            <span class="ms2_total_cost">2 900</span> руб.
+                                            <span class="ms2_total_cost">{{ price }}</span> руб.
                                         </th>
                                         <th>&nbsp;</th>
                                     </tr>
@@ -203,7 +203,7 @@
     <script src="/assets/html/js/lib/map.js"></script>
     <script src="/assets/html/js/lib/svg.js"></script>
     <script src="/assets/html/js/index.js"></script>
-    <script src="/assets/js/script.js"></script>
+    <!--<script src="/assets/js/script.js"></script>-->
     <script src="/assets/html/js/main.js"></script>
 </body>
 

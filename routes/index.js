@@ -1,7 +1,13 @@
-const express   = require('express');
-const router    = express.Router();
-const jimp      = require('jimp');
-const fs        = require('fs');
+const express       = require('express');
+const router        = express.Router();
+const jimp          = require('jimp');
+const fs            = require('fs');
+
+if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+}
+
 
 var googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyARNKILWOLm83HD1EDxTrVV0tjAhkCzHC8',
@@ -14,35 +20,26 @@ router.get('/', (request, response, next) => {
 });
 
 router.get('/cart', (request, response, next) => {
-    response.render( 'cart' );
+    var data = JSON.parse(localStorage.getItem(request.query.hash));
+    console.log(data);
+    response.render( 'cart', data );
 });
 
 router.get('/print', (request, response, next) => {
     response.render( 'print' );
 });
 
-router.get('/composite', (request, response, next) => {
-    var map, lables;
-    jimp.read(__public + 'assets/print_img/map.png')
-        .then(function (result) {
-            map = result;
-            return jimp.read(__public + 'assets/print_img/lables.png')
-        })
-        .then(function (lables) {
-            return map.composite(lables, 0, 942)
-        })
-        .then(function (image) {
-            image.write(__public + 'assets/print_img/result.png');
-        })
-        .catch(function (err) {
-            console.error(err);
-        });
-});
-
-router.post('/print_map', (request, response, next) => {
+/*router.post('/print_map', (request, response, next) => {
     var result = {getURL: 'http:\/\/95.183.10.70:3000\/assets\/map.png'};
     result = JSON.stringify(result);
     response.send(result);
+});*/
+
+router.post('/config', (request, response, next) => {
+    var data = JSON.stringify(request.body);
+    var hash = '"'+request.body.hash+'"';
+    localStorage.setItem(hash, data);
+    response.send(hash);
 });
 
 // Поиск координат на карте по городу
@@ -84,22 +81,22 @@ router.post('/parse', (request, response, next) => {
 
 // Сохранение и сборка изображений для печати
 router.post('/save', (request, response, next) => {
-    var hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
+    var hash = request.body.hash;
 
     var map_src = request.body.map_src;
     var map_data = map_src.replace(/^data:image\/\w+;base64,/, "");
     var map_buffer = new Buffer(map_data, 'base64');
-/*
-    fs.writeFile( __public + 'assets/print_img/'+hash+'_map.png', map_buffer, function(error) {
+
+    /*fs.writeFile( __public + 'assets/print_img/'+hash+'_map.png', map_buffer, function(error) {
         if (error) throw error;
-    })
-*/
+    })*/
+
 
 
     var labels_src = request.body.labels_src;
     var labels_data = labels_src.replace(/^data:image\/\w+;base64,/, "");
     var labels_buffer = new Buffer(labels_data, 'base64');
-  /*  fs.writeFile( __public + 'assets/print_img/'+hash+'_lables.png', labels_buffer, function(error) {
+    /*fs.writeFile( __public + 'assets/print_img/'+hash+'_lables.png', labels_buffer, function(error) {
         if (error) throw error;
     })*/
 
@@ -110,15 +107,41 @@ router.post('/save', (request, response, next) => {
             return jimp.read(labels_buffer)
         })
         .then(function (lables) {
-            return map.composite(lables, 0, 942)
+            lables.resize( map.bitmap.width, jimp.AUTO);
+            var padding = map.bitmap.height - lables.bitmap.height;
+            return map.composite(lables, 0, padding)
         })
         .then(function (image) {
-            image.write(__public + 'assets/print_img/result.png');
+            image.write(__public + 'assets/print_img/'+hash+'.png');
+            var path = __public + 'assets/temp_img/' + hash + '/';
+
         })
         .catch(function (err) {
             console.error(err);
         });
 
+
+    /*jimp.read( __public + 'assets/print_img/'+hash+'_map.png')
+        .then(function (result) {
+            map = result;
+            return jimp.read(__public + 'assets/print_img/'+hash+'_lables.png')
+        })
+        .then(function (lables) {
+            lables.resize( map.bitmap.width, jimp.AUTO);
+            //var padding = map.bitmap.height - lables.bitmap.height;
+            var padding = 0;
+
+            return map.composite(lables, 0, padding)
+        })
+        .then(function (image) {
+            image.write(__public + 'assets/print_img/'+hash+'.png');
+            var path = __public + 'assets/temp_img/' + hash + '/';
+
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
+*/
 
     response.send('done');
 });
