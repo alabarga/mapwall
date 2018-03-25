@@ -29,7 +29,21 @@ $(document).ready(function () {
     /*=====================   SEARCH   =======================*/
     $('#search').change(function () {
         var search = this.value;
-        $.post('search', {
+        var url = 'https://api.mapwall.ru/search';
+         /*
+          xhr.open('POST', url, true);
+          // замена onreadystatechange
+          xhr.onload = function() {
+              document.getElementById('response').innerHTML = xhr.responseText
+          }
+          xhr.onerror = function() {
+              alert("Error")
+          }
+          xhr.send(search)*/
+
+
+
+        $.post('/search', {
             search: $.trim(search)
         }, res => {
             var zoom = map.getZoom();
@@ -84,7 +98,6 @@ $(document).ready(function () {
         if (lat != undefined && lng != undefined && zoom != undefined) map.setView([lat, lng], zoom);
     }
 
-
     /*
     $(".nav-item.s2").click(function () {
 
@@ -106,14 +119,19 @@ $(document).ready(function () {
     });
     */
 
-
     $('#add_cart').on('click', function(){
         var size =$('.size_block .print_size:checked').attr('data-size');
+        var coord = map.getCenter();
         var data = {
             hash: hash,
             city: $('.city').text(),
+            country: $('.country span').text(),
             subtitle: $('.subtitle').text(),
             size: size,
+            lat: coord.lat,
+            lng: coord.lng,
+            zoom: map.getZoom(),
+            style: $('.map_style:checked').val(),
             price: $('.price_value').text()
         }
 
@@ -123,9 +141,18 @@ $(document).ready(function () {
             url: '/config',
             data: data,
             success: function (res) {
-                location.href = '/cart?hash='+res;
+                location.href = '/print?hash='+res;
             }
         })
+    })
+
+    $('#print').on('click', function(){
+        var lat = $('#lat').val();
+        var lng = $('#lng').val();
+        var zoom = $('#zoom').val();
+        var style = $('#style').val();
+        mapInit(style, lat, lng, zoom);
+
     })
 
 

@@ -1,51 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Leaflet Printing</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.3/leaflet.css"/>
-    <link rel="stylesheet" href="assets/leaflet.print.css"/>
-  </head>
-  <body>
-    <div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-    <script src="assets/leaflet.print.js"></script>
-    <script src="assets/info.json?var=printConfig"></script>
-    <script>
-      var map,
-	      printProvider,
-	      printControl,
-	      ll = new L.LatLng(-36.852668, 174.762675);
 
-	  map = L.map('map', {
-	      center: ll,
-	      zoom: 15
-	  });
+<head>
+  <title></title>
 
-	  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	  }).addTo(map);
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
 
-	  L.marker(ll).addTo(map);
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
 
-	  // Create the print provider, subscribing to print events
-	  printProvider = L.print.provider({
-          capabilities: printConfig,
-          method: 'POST',
-		  dpi: 254,
-		  outputFormat: 'png',
-		  customParams: {
-			  mapTitle: 'Print Test',
-			  comment: 'Testing Leaflet printing'
-		  }
-	  });
+  <link rel="stylesheet" href="assets/css/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 
-	  // Create a print control with the configured provider and add to the map
-	  printControl = L.control.print({
-		  provider: printProvider
-	  });
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/leaflet.js"></script>
+  <script src="assets/js/dom-to-image.min.js"></script>
+  <script src='assets/js/leaflet-image.js'></script>
 
-	  map.addControl(printControl);
-    </script>
-  </body>
+  <link href="assets/html/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/html/css/fonts.css" rel="stylesheet">
+  <link href="assets/html/css/theme.css" rel="stylesheet">
+
+  <link href="assets/html/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="wrapper">
+  <main>
+    <div class="transition">
+
+      <section data-theme="light" class="block2">
+        <div class="container h-100 h-auto">
+          <div class="row align-items-center h-100 h-auto">
+            <div class="col">
+              <div class="row">
+                <div class="col-lg-6 map-col">
+                  <div class="w">
+                    <div class="map" width="1984" height="2835" style="margin-top: 2500px;">
+                      <div class="map-container" id="mw">
+                        <div id="map"></div>
+
+                        <div id="labels" class="caption">
+                          <div class="city">{{ city }}</div>
+                          <div class="country"><span>{{ country }}</span></div>
+                          <div class="subtitle">{{ subtitle }}</div>
+                        </div>
+                        <input id="style" type="text" name="style" value="{{style}}">
+                        <input id="lat" type="text" name="lat" value="{{lat}}">
+                        <input id="lng" type="text" name="lng" value="{{lng}}">
+                        <input id="zoom" type="text" name="zoom" value="{{zoom}}">
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="action">
+              <button id="print">Распечатать</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="assets/html/js/jquery.min.js"></script>
+<script src="assets/html/js/bootstrap.min.js"></script>
+
+<script src="assets/html/js/lib/map.js"></script>
+<script src="assets/html/js/lib/svg.js"></script>
+<script src="assets/html/js/index.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/html/js/main.js"></script>
+
+</body>
+
 </html>
