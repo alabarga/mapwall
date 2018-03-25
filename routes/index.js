@@ -32,9 +32,14 @@ router.get('/cart', (request, response, next) => {
 });
 
 router.get('/print', (request, response, next) => {
-    var data = JSON.parse(localStorage.getItem(request.query.hash));
-    console.log(data);
-    response.render('print', data);
+    if(request.query.hash){
+        var data = JSON.parse(localStorage.getItem(request.query.hash));
+        console.log(data);
+        response.render('print', data);
+    }else{
+        response.render('index');
+    }
+
 });
 
 /*router.post('/print_map', (request, response, next) => {

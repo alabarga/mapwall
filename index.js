@@ -1,10 +1,17 @@
 const express 		= require('express');
 const http 			= require('http');
+const https 		= require('https');
 const path 			= require('path');
 const nunjucks 		= require('nunjucks');
 const bodyParser 	= require('body-parser');
 const app 			= express();
 const cors 			= require('cors');
+const fs 			= require('fs');
+
+const serverConfig = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem'),
+};
 
 app.use(cors());
 app.options('*', cors());
@@ -28,7 +35,7 @@ const index = require( './routes/index' );
 
 app.use('/', index);
 
-const server = http.createServer( app );
+const server = https.createServer(serverConfig, app);
 
 var port = process.env.PORT || 3000;
 server.listen(port, function() {
