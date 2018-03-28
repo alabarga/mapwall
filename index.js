@@ -35,7 +35,8 @@ const index = require( './routes/index' );
 
 app.use('/', index);
 
-const server = https.createServer(serverConfig, app);
+//const server = https.createServer(serverConfig, app);
+const server = http.createServer(app);
 
 var port = process.env.PORT || 3000;
 server.listen(port, function() {

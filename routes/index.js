@@ -57,24 +57,27 @@ router.post('/config', (request, response, next) => {
 
 // Поиск координат на карте по городу
 router.post('/search', (request, response, next) => {
-    googleMapsClient.geocode({
+    console.log(request.body.search);
+    if(request.body.search){
+        googleMapsClient.geocode({
             address: request.body.search
         }).asPromise()
-        .then((data) => {
-            var result = {};
-            var json = data.json.results[0];
-            result.title = json.address_components[0].long_name;
-            for (let i = 0; i <= json.address_components.length - 1; i++) {
-                if (json.address_components[i].types[0] == 'country') result.country = json.address_components[i].long_name;
-            }
-            result.lat = json.geometry.location.lat;
-            result.lng = json.geometry.location.lng;
-            //console.log(JSON.stringify(json));
-            response.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+            .then((data) => {
+                var result = {};
+                var json = data.json.results[0];
+                result.title = json.address_components[0].long_name;
+                for (let i = 0; i <= json.address_components.length - 1; i++) {
+                    if (json.address_components[i].types[0] == 'country') result.country = json.address_components[i].long_name;
+                }
+                result.lat = json.geometry.location.lat;
+                result.lng = json.geometry.location.lng;
+                //console.log(JSON.stringify(json));
+                response.send(result);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }    
 });
 
 // Сохранение временных изображений для сборки карты
@@ -102,19 +105,9 @@ router.post('/save', (request, response, next) => {
     var map_data = map_src.replace(/^data:image\/\w+;base64,/, "");
     var map_buffer = new Buffer(map_data, 'base64');
 
-    /*fs.writeFile( __public + 'assets/print_img/'+hash+'_map.png', map_buffer, function(error) {
-        if (error) throw error;
-    })*/
-
-
-
     var labels_src = request.body.labels_src;
     var labels_data = labels_src.replace(/^data:image\/\w+;base64,/, "");
     var labels_buffer = new Buffer(labels_data, 'base64');
-    /*fs.writeFile( __public + 'assets/print_img/'+hash+'_lables.png', labels_buffer, function(error) {
-        if (error) throw error;
-    })*/
-
 
     jimp.read(map_buffer)
         .then(function (result) {
@@ -134,29 +127,6 @@ router.post('/save', (request, response, next) => {
         .catch(function (err) {
             console.error(err);
         });
-
-
-    /*jimp.read( __public + 'assets/print_img/'+hash+'_map.png')
-        .then(function (result) {
-            map = result;
-            return jimp.read(__public + 'assets/print_img/'+hash+'_lables.png')
-        })
-        .then(function (lables) {
-            lables.resize( map.bitmap.width, jimp.AUTO);
-            //var padding = map.bitmap.height - lables.bitmap.height;
-            var padding = 0;
-
-            return map.composite(lables, 0, padding)
-        })
-        .then(function (image) {
-            image.write(__public + 'assets/print_img/'+hash+'.png');
-            var path = __public + 'assets/temp_img/' + hash + '/';
-
-        })
-        .catch(function (err) {
-            console.error(err);
-        });
-*/
 
     response.send('done');
 });
