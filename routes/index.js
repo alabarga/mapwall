@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const jimp = require('jimp');
-const fs = require('fs');
+const express   = require('express');
+const router    = express.Router();
+const jimp      = require('jimp');
+const fs        = require('fs');
+var   rimraf    = require('rimraf');
 
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
@@ -44,6 +45,10 @@ router.get('/print', (request, response, next) => {
 
 });
 
+/*router.get('/test', (request, response, next) => {
+    rimraf(__public + 'assets/temp_img/zpunmkt', function () { console.log('done'); });
+});*/
+
 /*router.post('/print_map', (request, response, next) => {
     var result = {getURL: 'http:\/\/95.183.10.70:3000\/assets\/map.png'};
     result = JSON.stringify(result);
@@ -81,7 +86,7 @@ router.post('/search', (request, response, next) => {
             .catch((err) => {
                 console.log(err);
             });
-    }    
+    }
 });
 
 // Сохранение временных изображений для сборки карты
@@ -127,8 +132,7 @@ router.post('/save', (request, response, next) => {
         })
         .then(function (image) {
             image.write(__public + 'assets/print_img/' + hash + '.png');
-            var path = __public + 'assets/temp_img/' + hash + '/';
-
+            rimraf(__public + 'assets/temp_img/' + hash, function () { console.log('remove temp done'); });
         })
         .catch(function (err) {
             console.log(err);
