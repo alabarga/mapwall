@@ -74,6 +74,8 @@ router.post('/search', (request, response, next) => {
                 result.lat = json.geometry.location.lat;
                 result.lng = json.geometry.location.lng;
                 //console.log(JSON.stringify(json));
+                // result.lat.substr(-20,6);
+                // result.lng.substr(-20,6);
                 response.send(result);
             })
             .catch((err) => {
@@ -120,8 +122,8 @@ router.post('/save', (request, response, next) => {
         })
         .then(function (lables) {
             lables.resize(map.bitmap.width, map.bitmap.height);
-            var padding = map.bitmap.height - lables.bitmap.height;
-            return map.composite(lables, 0, padding)
+            //var padding = map.bitmap.height - lables.bitmap.height;
+            return map.composite(lables, 0, 0)
         })
         .then(function (image) {
             image.write(__public + 'assets/print_img/' + hash + '.png');

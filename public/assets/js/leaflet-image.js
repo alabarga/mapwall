@@ -7,13 +7,16 @@
 
 // leaflet-image
     module.exports = function leafletImage(map, callback) {
-
+        var dimensions;
         var hasMapbox = !!L.mapbox;
         var size = $('.print_size:checked').val();
+        var orientation = $('input[name=orientation]:checked').val();
         size = size.split('/');
+        if(orientation == 'vertical') dimensions = {x: size[0], y: size[1]};
+        if(orientation == 'horizontal') dimensions = {x: size[1], y: size[0]};
 
-        var dimensions = {x: size[0], y: size[1]},
-            layerQueue = new queue(1);
+
+        var layerQueue = new queue(1);
 
         var canvas = document.createElement('canvas');
         canvas.width = dimensions.x;

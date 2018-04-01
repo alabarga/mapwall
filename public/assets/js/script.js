@@ -57,8 +57,13 @@ $(document).ready(function () {
             $('.country span').text(res.country);
             $('#map_country').val(res.country);
 
-            $('.subtitle').text(res.lat + ' / ' + res.lng);
-            $('#map_subtitle').val(res.lat + ' / ' + res.lng);
+            var lat = String(res.lat);
+            var lng = String(res.lng);
+            lat = lat.substring(0, 6);
+            lng = lng.substring(0, 6);
+
+            $('.subtitle').text(lat + ' / ' + lng);
+            $('#map_subtitle').val(lat + ' / ' + lng);
         })
     });
 
@@ -185,9 +190,18 @@ $(document).ready(function () {
                 console.log(canvas);
                 var img = document.createElement('img');
                 var dimensions = $('.print_size:checked').val();
+                var orientation = $('input[name=orientation]:checked').val();
                 dimensions = dimensions.split('/');
-                img.width = dimensions[0];
-                img.height = dimensions[1];
+                if(orientation == 'vertical'){
+                    img.width = dimensions[0];
+                    img.height = dimensions[1];
+                }
+                if(orientation == 'horizontal'){
+                    img.width = dimensions[1];
+                    img.height = dimensions[0];
+                }
+                console.log('width: ', img.width, 'height: ', img.height);
+
                 img.src = canvas.toDataURL();
                 var map_src = img.src;
                 // document.getElementById('images').innerHTML = '';
