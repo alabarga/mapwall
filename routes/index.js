@@ -22,6 +22,8 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', (request, response, next) => {
+    //showMemoryUsage();
+    //setInterval(showMemoryUsage, 1000);
     response.render('index');
 });
 
@@ -99,12 +101,14 @@ router.post('/parse', (request, response, next) => {
 
 // Сохранение и сборка изображений для печати
 router.post('/save', (request, response, next) => {
+
+    console.log('save');
     var hash = request.body.hash;
 
     var map_src = request.body.map_src;
     var map_data = map_src.replace(/^data:image\/\w+;base64,/, "");
     var map_buffer = new Buffer(map_data, 'base64');
-
+    console.log('before Buffer');
     var labels_src = request.body.labels_src;
     var labels_data = labels_src.replace(/^data:image\/\w+;base64,/, "");
     var labels_buffer = new Buffer(labels_data, 'base64');
@@ -115,7 +119,7 @@ router.post('/save', (request, response, next) => {
             return jimp.read(labels_buffer)
         })
         .then(function (lables) {
-            lables.resize(map.bitmap.width, jimp.AUTO);
+            lables.resize(map.bitmap.width, map.bitmap.height);
             var padding = map.bitmap.height - lables.bitmap.height;
             return map.composite(lables, 0, padding)
         })
@@ -125,10 +129,14 @@ router.post('/save', (request, response, next) => {
 
         })
         .catch(function (err) {
-            console.error(err);
+            console.log(err);
         });
 
     response.send('done');
 });
+
+function showMemoryUsage() {
+    console.log("Process: %s - %s MB ", new Date(), process.memoryUsage().rss / 1048576, process.memoryUsage());
+}
 
 module.exports = router;

@@ -247,6 +247,37 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label>Выберите рамку</label>
+
+                                                            <ul class="params nav nav-pills nav-fill">
+                                                                <li class="nav-item f1">
+                                                                    <label class="radio">
+                                                                        <input type="radio" class="frame-i" name="frame" value="frame1" checked>
+                                                                        <div class="radio-body">рамка 1</div>
+                                                                    </label>
+                                                                </li>
+                                                                <li class="nav-item f2">
+                                                                    <label class="radio">
+                                                                        <input type="radio" class="frame-i" name="frame" value="frame2">
+                                                                        <div class="radio-body">рамка 2</div>
+                                                                    </label>
+                                                                </li>
+                                                                <li class="nav-item f3">
+                                                                    <label class="radio">
+                                                                        <input type="radio" class="frame-i" name="frame" value="frame3">
+                                                                        <div class="radio-body">рамка 3</div>
+                                                                    </label>
+                                                                </li>
+                                                                <li class="nav-item f4">
+                                                                    <label class="radio">
+                                                                        <input type="radio" class="frame-i" name="frame" value="frame4">
+                                                                        <div class="radio-body">рамка 4</div>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label>Выберите oриентацию</label>
 
                                                             <ul class="params nav nav-pills nav-fill">
@@ -276,16 +307,20 @@
                                         </div>
                                     </div>
 
+
                                     <div class="col-lg-6 map-col">
                                         <div class="w">
                                             <div class="map" width="1984" height="2835">
                                                 <div class="map-container" id="mw">
                                                     <div id="map"></div>
-
-                                                    <div id="labels" class="caption">
-                                                        <div class="city">Город</div>
-                                                        <div class="country"><span>Страна</span></div>
-                                                        <div class="subtitle">Координаты</div>
+                                                    <div id="frame" class="frame frame1">
+                                                        <div id="inner"></div>
+                                                        <div id="outer"></div>
+                                                        <div id="labels" class="caption">
+                                                            <div class="city">Город</div>
+                                                            <div class="country"><span>Страна</span></div>
+                                                            <div class="subtitle">Координаты</div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

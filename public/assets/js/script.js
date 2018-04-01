@@ -157,6 +157,7 @@ $(document).ready(function () {
 
 
     $('.test_print').on('click', function () {
+        hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
         var ajax_count = 0;
         var img_count = $('.leaflet-tile-container img').length;
         localStorage.setItem('hash', hash);
@@ -192,14 +193,16 @@ $(document).ready(function () {
                 // document.getElementById('images').innerHTML = '';
                 // document.getElementById('images').appendChild(img);
 
-                var labels = document.getElementById('labels');
+                var labels = document.getElementById('frame');
                 labels.style.width = img.width;
                 labels.style.position = 'relative';
             } catch (err) {
                 console.error('buildImg(map) error: ', err);
             }
+
             domtoimage.toPng(labels)
                 .then(function (labels_src) {
+                    console.log(labels_src);
                     labels.style.position = 'absolute';
                     $.post('save', {
                         map_src: map_src,
@@ -207,6 +210,7 @@ $(document).ready(function () {
                         hash: hash
                     }, res => {
                         console.log('save: ', res);
+                        alert('saved');
                     });
                 })
                 .catch(function (error) {
