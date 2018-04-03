@@ -29,21 +29,9 @@ $(document).ready(function () {
     /*=====================   SEARCH   =======================*/
     $('#search').change(function () {
         var search = this.value;
-        var url = 'https://api.mapwall.ru/search';
-         /*
-          xhr.open('POST', url, true);
-          // замена onreadystatechange
-          xhr.onload = function() {
-              document.getElementById('response').innerHTML = xhr.responseText
-          }
-          xhr.onerror = function() {
-              alert("Error")
-          }
-          xhr.send(search)*/
 
 
-
-        $.post('/search', {
+        $.post('https://195.133.197.218:3000/search', {
             search: $.trim(search)
         }, res => {
             var zoom = map.getZoom();
@@ -65,6 +53,7 @@ $(document).ready(function () {
             $('.subtitle').text(lat + ' / ' + lng);
             $('#map_subtitle').val(lat + ' / ' + lng);
         })
+
     });
 
 
@@ -184,7 +173,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             async: false,
-            url: 'http://195.133.197.218:3000/parse',
+            url: 'https://195.133.197.218:3000/parse',
             data: {
                 data: data,
                 img: imgs
@@ -234,7 +223,7 @@ $(document).ready(function () {
                     $.ajax({
                         type: 'post',
                         async: false,
-                        url: 'http://195.133.197.218:3000/save',
+                        url: 'https://195.133.197.218:3000/save',
                         data: {
                             map_src: map_src,
                             labels_src: labels_src,

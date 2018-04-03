@@ -2,7 +2,6 @@ const express   = require('express');
 const router    = express.Router();
 const jimp      = require('jimp');
 const fs        = require('fs');
-const download  = require('image-downloader')
 var   rimraf    = require('rimraf');
 
 if (typeof localStorage === "undefined" || localStorage === null) {
@@ -46,9 +45,9 @@ router.get('/print', (request, response, next) => {
 
 });
 
-/*router.get('/test', (request, response, next) => {
-    rimraf(__public + 'assets/temp_img/zpunmkt', function () { console.log('done'); });
-});*/
+router.get('/test', (request, response, next) => {
+
+});
 
 /*router.post('/print_map', (request, response, next) => {
     var result = {getURL: 'http:\/\/95.183.10.70:3000\/assets\/map.png'};
@@ -126,7 +125,6 @@ router.post('/save', (request, response, next) => {
         })
         .then(function (lables) {
             lables.resize(map.bitmap.width, map.bitmap.height);
-            //var padding = map.bitmap.height - lables.bitmap.height;
             return map.composite(lables, 0, 0)
         })
         .then(function (image) {

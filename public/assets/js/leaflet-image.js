@@ -176,7 +176,7 @@
                 var path, name;
                 path = arr[0].split('/');
                 name = path.join('_');
-                src = 'http://195.133.197.218:3000/assets/temp_img/' + hash + '_' + name;
+                src = 'https://195.133.197.218:3000/assets/temp_img/' + hash + '_' + name;
                 im.src = src;
             }
 
