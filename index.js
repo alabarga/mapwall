@@ -23,7 +23,7 @@ app.set('view engine', 'html');
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static( __public ));
-
+app.use('/temp_img', express.static(__dirname + '/public/assets'));
 nunjucks.configure('views', {
 	autoescape: true,
 	express: app,

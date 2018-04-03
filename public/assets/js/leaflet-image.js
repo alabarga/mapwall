@@ -173,7 +173,10 @@
                 var src = url.substr(26);  // Обрезаем https://tiles.mapiful.com/
                 var arr = src.split('?');  // Вырезаем cache=1520651447810
                 var hash = localStorage.getItem('hash');
-                src = 'assets/temp_img/' + hash + '/' + arr[0];
+                var path, name;
+                path = arr[0].split('/');
+                name = path.join('_');
+                src = 'http://195.133.197.218:3000/assets/temp_img/' + hash + '_' + name;
                 im.src = src;
             }
 

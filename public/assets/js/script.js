@@ -163,24 +163,39 @@ $(document).ready(function () {
 
     $('.test_print').on('click', function () {
         hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
-        var ajax_count = 0;
-        var img_count = $('.leaflet-tile-container img').length;
         localStorage.setItem('hash', hash);
+        var src = $('.leaflet-tile-container img').attr('src');
+        src = src.split('/'); // ["https:", "", "tiles.mapiful.com", "mono", "6", "33", "25.png"]
+        var style = src[3];
+        var zoom = src[4];
+        var imgs = [];
         $('.leaflet-tile-container img').each(function (i) {
-            $.ajax({
-                type: 'post',
-                async: false,
-                url: '/parse',
-                data: {
-                    image: this.src,
-                    hash: hash
-                },
-                success: function (res) {
-                    if (res == 'done') ajax_count++;
-                    if (ajax_count == img_count) buildImg(map);
-                }
-            })
+            src = this.src;
+            src = src.split('/');
+            imgs.push(src[5]+'/'+src[6]);
         });
+
+        var data = {};
+        data.hash = hash;
+        data.style = style;
+        data.zoom = zoom;
+        data = JSON.stringify(data);
+        imgs = JSON.stringify(imgs);
+        $.ajax({
+            type: 'post',
+            async: false,
+            url: 'http://195.133.197.218:3000/parse',
+            data: {
+                data: data,
+                img: imgs
+            },
+            success: function (res) {
+                setTimeout(function(){
+                    buildImg(map);
+                }, 40000);
+            }
+        })
+        console.log(data);
     })
 
     /*===================== BUILD IMG =========================*/
@@ -204,8 +219,6 @@ $(document).ready(function () {
 
                 img.src = canvas.toDataURL();
                 var map_src = img.src;
-                // document.getElementById('images').innerHTML = '';
-                // document.getElementById('images').appendChild(img);
 
                 var labels = document.getElementById('frame');
                 labels.style.width = img.width;
@@ -218,14 +231,20 @@ $(document).ready(function () {
                 .then(function (labels_src) {
                     console.log(labels_src);
                     labels.style.position = 'absolute';
-                    $.post('save', {
-                        map_src: map_src,
-                        labels_src: labels_src,
-                        hash: hash
-                    }, res => {
-                        console.log('save: ', res);
-                        alert('saved');
-                    });
+                    $.ajax({
+                        type: 'post',
+                        async: false,
+                        url: 'http://195.133.197.218:3000/save',
+                        data: {
+                            map_src: map_src,
+                            labels_src: labels_src,
+                            hash: hash
+                        },
+                        success: function (res) {
+                            console.log('save: ', res);
+                            alert('saved');
+                        }
+                    })
                 })
                 .catch(function (error) {
                     console.error('domtoimage.toPng(labels) error: ', error);

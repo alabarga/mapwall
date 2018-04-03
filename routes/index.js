@@ -2,6 +2,7 @@ const express   = require('express');
 const router    = express.Router();
 const jimp      = require('jimp');
 const fs        = require('fs');
+const download  = require('image-downloader')
 var   rimraf    = require('rimraf');
 
 if (typeof localStorage === "undefined" || localStorage === null) {
@@ -78,9 +79,6 @@ router.post('/search', (request, response, next) => {
                 }
                 result.lat = json.geometry.location.lat;
                 result.lng = json.geometry.location.lng;
-                //console.log(JSON.stringify(json));
-                // result.lat.substr(-20,6);
-                // result.lng.substr(-20,6);
                 response.send(result);
             })
             .catch((err) => {
@@ -91,18 +89,19 @@ router.post('/search', (request, response, next) => {
 
 // Сохранение временных изображений для сборки карты
 router.post('/parse', (request, response, next) => {
-    var url = request.body.image;
-    var hash = request.body.hash;
-    var name = url.substr(26); // Обрезаем https://tiles.mapiful.com/
-    name = 'assets/temp_img/' + hash + '/' + name;
+    var data = JSON.parse(request.body.data);
+    var hash = data.hash;
+    var res = [];
+    var img = JSON.parse(request.body.img);
+    for(let key in img){
+        var name = img[key].split('/').join('_');
+        var url  = 'https://tiles.mapiful.com/' + data.style + '/' + data.zoom + '/' + img[key];
+        var new_name = __public + 'assets/temp_img/' + hash + '_' + data.style + '_' + data.zoom + '_' + name;
+        res.push(new_name);
+        saveImg(url, new_name);
+    }
 
-    jimp.read(url).then(function (image) {
-        return image.write(__public + name);
-    }).then(function () {
-        response.send('done');
-    }).catch(function (err) {
-        console.error(err);
-    });
+    response.send('done');
 });
 
 
@@ -115,7 +114,7 @@ router.post('/save', (request, response, next) => {
     var map_src = request.body.map_src;
     var map_data = map_src.replace(/^data:image\/\w+;base64,/, "");
     var map_buffer = new Buffer(map_data, 'base64');
-    console.log('before Buffer');
+
     var labels_src = request.body.labels_src;
     var labels_data = labels_src.replace(/^data:image\/\w+;base64,/, "");
     var labels_buffer = new Buffer(labels_data, 'base64');
@@ -132,7 +131,7 @@ router.post('/save', (request, response, next) => {
         })
         .then(function (image) {
             image.write(__public + 'assets/print_img/' + hash + '.png');
-            rimraf(__public + 'assets/temp_img/' + hash, function () { console.log('remove temp done'); });
+            rimraf(__public + 'assets/temp_img/*', function () { console.log('remove temp done'); });
         })
         .catch(function (err) {
             console.log(err);
@@ -143,6 +142,15 @@ router.post('/save', (request, response, next) => {
 
 function showMemoryUsage() {
     console.log("Process: %s - %s MB ", new Date(), process.memoryUsage().rss / 1048576, process.memoryUsage());
+}
+
+function saveImg(url, name){
+    jimp.read(url).then(function (image) {
+        console.log('write: ', name);
+        image.write(name);
+    }).catch(function (err) {
+        console.error(err);
+    });
 }
 
 module.exports = router;
