@@ -88,6 +88,7 @@ router.post('/search', (request, response, next) => {
 
 // Сохранение временных изображений для сборки карты
 router.post('/parse', (request, response, next) => {
+    console.log(request.body);
     var data = JSON.parse(request.body.data);
     var hash = data.hash;
     var res = [];

@@ -9,11 +9,10 @@
     module.exports = function leafletImage(map, callback) {
         var dimensions;
         var hasMapbox = !!L.mapbox;
-        var size = $('.print_size:checked').val();
         var orientation = $('input.orientation:checked').val();
-        size = size.split('/');
-        if(orientation == 'vertical') dimensions = {x: size[0], y: size[1]};
-        if(orientation == 'horizontal') dimensions = {x: size[1], y: size[0]};
+        
+        if(orientation == 'vertical') dimensions = {x: 1984, y: 2835};
+        if(orientation == 'horizontal') dimensions = {x: 1984, y: 1417};
 
 
         var layerQueue = new queue(1);

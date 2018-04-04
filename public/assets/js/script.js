@@ -193,17 +193,12 @@ $(document).ready(function () {
             try {
                 console.log(canvas);
                 var img = document.createElement('img');
-                var dimensions = $('.print_size:checked').val();
-                var orientation = $('input[name=orientation]:checked').val();
-                dimensions = dimensions.split('/');
-                if(orientation == 'vertical'){
-                    img.width = dimensions[0];
-                    img.height = dimensions[1];
-                }
-                if(orientation == 'horizontal'){
-                    img.width = dimensions[1];
-                    img.height = dimensions[0];
-                }
+                var orientation = $('input.orientation:checked').val();
+                
+                img.width = 1984;
+                if(orientation == 'vertical') img.height = 2835;
+                if(orientation == 'horizontal') img.height = 1417;
+                
                 console.log('width: ', img.width, 'height: ', img.height);
 
                 img.src = canvas.toDataURL();
