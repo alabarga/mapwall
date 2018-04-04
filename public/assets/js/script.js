@@ -29,21 +29,9 @@ $(document).ready(function () {
     /*=====================   SEARCH   =======================*/
     $('#search').change(function () {
         var search = this.value;
-        var url = 'https://api.mapwall.ru/search';
-         /*
-          xhr.open('POST', url, true);
-          // замена onreadystatechange
-          xhr.onload = function() {
-              document.getElementById('response').innerHTML = xhr.responseText
-          }
-          xhr.onerror = function() {
-              alert("Error")
-          }
-          xhr.send(search)*/
 
 
-
-        $.post('/search', {
+        $.post('https://195.133.197.218:3000/search', {
             search: $.trim(search)
         }, res => {
             var zoom = map.getZoom();
@@ -57,9 +45,15 @@ $(document).ready(function () {
             $('.country span').text(res.country);
             $('#map_country').val(res.country);
 
-            $('.subtitle').text(res.lat + ' / ' + res.lng);
-            $('#map_subtitle').val(res.lat + ' / ' + res.lng);
+            var lat = String(res.lat);
+            var lng = String(res.lng);
+            lat = lat.substring(0, 6);
+            lng = lng.substring(0, 6);
+
+            $('.subtitle').text(lat + ' / ' + lng);
+            $('#map_subtitle').val(lat + ' / ' + lng);
         })
+
     });
 
 
@@ -157,24 +151,40 @@ $(document).ready(function () {
 
 
     $('.test_print').on('click', function () {
-        var ajax_count = 0;
-        var img_count = $('.leaflet-tile-container img').length;
+        hash = Math.random().toString(36).replace(/[^a-z]+/g, '');
         localStorage.setItem('hash', hash);
+        var src = $('.leaflet-tile-container img').attr('src');
+        src = src.split('/'); // ["https:", "", "tiles.mapiful.com", "mono", "6", "33", "25.png"]
+        var style = src[3];
+        var zoom = src[4];
+        var imgs = [];
         $('.leaflet-tile-container img').each(function (i) {
-            $.ajax({
-                type: 'post',
-                async: false,
-                url: '/parse',
-                data: {
-                    image: this.src,
-                    hash: hash
-                },
-                success: function (res) {
-                    if (res == 'done') ajax_count++;
-                    if (ajax_count == img_count) buildImg(map);
-                }
-            })
+            src = this.src;
+            src = src.split('/');
+            imgs.push(src[5]+'/'+src[6]);
         });
+
+        var data = {};
+        data.hash = hash;
+        data.style = style;
+        data.zoom = zoom;
+        data = JSON.stringify(data);
+        imgs = JSON.stringify(imgs);
+        $.ajax({
+            type: 'post',
+            async: false,
+            url: 'https://195.133.197.218:3000/parse',
+            data: {
+                data: data,
+                img: imgs
+            },
+            success: function (res) {
+                setTimeout(function(){
+                    buildImg(map);
+                }, 40000);
+            }
+        })
+        console.log(data);
     })
 
     /*===================== BUILD IMG =========================*/
@@ -184,30 +194,46 @@ $(document).ready(function () {
                 console.log(canvas);
                 var img = document.createElement('img');
                 var dimensions = $('.print_size:checked').val();
+                var orientation = $('input[name=orientation]:checked').val();
                 dimensions = dimensions.split('/');
-                img.width = dimensions[0];
-                img.height = dimensions[1];
+                if(orientation == 'vertical'){
+                    img.width = dimensions[0];
+                    img.height = dimensions[1];
+                }
+                if(orientation == 'horizontal'){
+                    img.width = dimensions[1];
+                    img.height = dimensions[0];
+                }
+                console.log('width: ', img.width, 'height: ', img.height);
+
                 img.src = canvas.toDataURL();
                 var map_src = img.src;
-                // document.getElementById('images').innerHTML = '';
-                // document.getElementById('images').appendChild(img);
 
-                var labels = document.getElementById('labels');
+                var labels = document.getElementById('frame');
                 labels.style.width = img.width;
                 labels.style.position = 'relative';
             } catch (err) {
                 console.error('buildImg(map) error: ', err);
             }
+
             domtoimage.toPng(labels)
                 .then(function (labels_src) {
+                    console.log(labels_src);
                     labels.style.position = 'absolute';
-                    $.post('save', {
-                        map_src: map_src,
-                        labels_src: labels_src,
-                        hash: hash
-                    }, res => {
-                        console.log('save: ', res);
-                    });
+                    $.ajax({
+                        type: 'post',
+                        async: false,
+                        url: 'https://195.133.197.218:3000/save',
+                        data: {
+                            map_src: map_src,
+                            labels_src: labels_src,
+                            hash: hash
+                        },
+                        success: function (res) {
+                            console.log('save: ', res);
+                            alert('saved');
+                        }
+                    })
                 })
                 .catch(function (error) {
                     console.error('domtoimage.toPng(labels) error: ', error);

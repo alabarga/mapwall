@@ -7,13 +7,16 @@
 
 // leaflet-image
     module.exports = function leafletImage(map, callback) {
-
+        var dimensions;
         var hasMapbox = !!L.mapbox;
         var size = $('.print_size:checked').val();
+        var orientation = $('input.orientation:checked').val();
         size = size.split('/');
+        if(orientation == 'vertical') dimensions = {x: size[0], y: size[1]};
+        if(orientation == 'horizontal') dimensions = {x: size[1], y: size[0]};
 
-        var dimensions = {x: size[0], y: size[1]},
-            layerQueue = new queue(1);
+
+        var layerQueue = new queue(1);
 
         var canvas = document.createElement('canvas');
         canvas.width = dimensions.x;
@@ -170,7 +173,10 @@
                 var src = url.substr(26);  // Обрезаем https://tiles.mapiful.com/
                 var arr = src.split('?');  // Вырезаем cache=1520651447810
                 var hash = localStorage.getItem('hash');
-                src = 'assets/temp_img/' + hash + '/' + arr[0];
+                var path, name;
+                path = arr[0].split('/');
+                name = path.join('_');
+                src = 'https://195.133.197.218:3000/assets/temp_img/' + hash + '_' + name;
                 im.src = src;
             }
 

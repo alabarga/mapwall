@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const jimp = require('jimp');
-const fs = require('fs');
+const express   = require('express');
+const router    = express.Router();
+const jimp      = require('jimp');
+const fs        = require('fs');
+var   rimraf    = require('rimraf');
 
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
@@ -22,6 +23,8 @@ router.use(function(req, res, next) {
 });
 
 router.get('/', (request, response, next) => {
+    //showMemoryUsage();
+    //setInterval(showMemoryUsage, 1000);
     response.render('index');
 });
 
@@ -39,6 +42,10 @@ router.get('/print', (request, response, next) => {
     }else{
         response.render('index');
     }
+
+});
+
+router.get('/test', (request, response, next) => {
 
 });
 
@@ -71,34 +78,36 @@ router.post('/search', (request, response, next) => {
                 }
                 result.lat = json.geometry.location.lat;
                 result.lng = json.geometry.location.lng;
-                //console.log(JSON.stringify(json));
                 response.send(result);
             })
             .catch((err) => {
                 console.log(err);
             });
-    }    
+    }
 });
 
 // Сохранение временных изображений для сборки карты
 router.post('/parse', (request, response, next) => {
-    var url = request.body.image;
-    var hash = request.body.hash;
-    var name = url.substr(26); // Обрезаем https://tiles.mapiful.com/
-    name = 'assets/temp_img/' + hash + '/' + name;
+    var data = JSON.parse(request.body.data);
+    var hash = data.hash;
+    var res = [];
+    var img = JSON.parse(request.body.img);
+    for(let key in img){
+        var name = img[key].split('/').join('_');
+        var url  = 'https://tiles.mapiful.com/' + data.style + '/' + data.zoom + '/' + img[key];
+        var new_name = __public + 'assets/temp_img/' + hash + '_' + data.style + '_' + data.zoom + '_' + name;
+        res.push(new_name);
+        saveImg(url, new_name);
+    }
 
-    jimp.read(url).then(function (image) {
-        return image.write(__public + name);
-    }).then(function () {
-        response.send('done');
-    }).catch(function (err) {
-        console.error(err);
-    });
+    response.send('done');
 });
 
 
 // Сохранение и сборка изображений для печати
 router.post('/save', (request, response, next) => {
+
+    console.log('save');
     var hash = request.body.hash;
 
     var map_src = request.body.map_src;
@@ -115,20 +124,31 @@ router.post('/save', (request, response, next) => {
             return jimp.read(labels_buffer)
         })
         .then(function (lables) {
-            lables.resize(map.bitmap.width, jimp.AUTO);
-            var padding = map.bitmap.height - lables.bitmap.height;
-            return map.composite(lables, 0, padding)
+            lables.resize(map.bitmap.width, map.bitmap.height);
+            return map.composite(lables, 0, 0)
         })
         .then(function (image) {
             image.write(__public + 'assets/print_img/' + hash + '.png');
-            var path = __public + 'assets/temp_img/' + hash + '/';
-
+            rimraf(__public + 'assets/temp_img/*', function () { console.log('remove temp done'); });
         })
         .catch(function (err) {
-            console.error(err);
+            console.log(err);
         });
 
     response.send('done');
 });
+
+function showMemoryUsage() {
+    console.log("Process: %s - %s MB ", new Date(), process.memoryUsage().rss / 1048576, process.memoryUsage());
+}
+
+function saveImg(url, name){
+    jimp.read(url).then(function (image) {
+        console.log('write: ', name);
+        image.write(name);
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
 
 module.exports = router;
