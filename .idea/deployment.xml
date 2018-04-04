@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="mapwall_vps">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/api.mapwall" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="my-vps">
         <serverdata>
           <mappings>
